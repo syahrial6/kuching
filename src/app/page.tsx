@@ -182,7 +182,7 @@ const TravelLandingPage = () => {
 
   const t = isIndonesia ? content.id : content.en;
 
-  const scrollToSection = (id:any) => {
+  const scrollToSection = (id:string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
   };
