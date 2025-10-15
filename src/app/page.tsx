@@ -123,6 +123,7 @@ const TravelLandingPage = () => {
       subtitle: 'New Avanza',
       price : 'Rp 5.500.000',
       specs: [
+        '3 Hari 2 Malam',
         'Include Driver & Fuel',
         'BBM Selama Perjalanan',
         'Roadtax & Insurance Malaysia',
@@ -139,6 +140,7 @@ const TravelLandingPage = () => {
       subtitle: 'Innova Reborn',
       price : 'Rp 6.500.000',
       specs: [
+          '3 Hari 2 Malam',
          'Include Driver & Fuel',
         'BBM Selama Perjalanan',
         'Roadtax & Insurance Malaysia',
@@ -155,6 +157,7 @@ const TravelLandingPage = () => {
       subtitle: 'Toyota Hiace Commuter',
       price : 'Rp 8.000.000',
       specs: [
+          '3 Hari 2 Malam',
          'Include Driver & Fuel',
         'BBM Selama Perjalanan',
         'Roadtax & Insurance Malaysia',
@@ -172,6 +175,7 @@ const TravelLandingPage = () => {
       subtitle: 'Fortuner GR Sport',
       price : 'Rp 7.500.000',
       specs: [
+        '3 Hari 2 Malam',
          'Include Driver & Fuel',
           'BBM Selama Perjalanan',
         'Roadtax & Insurance Malaysia',
