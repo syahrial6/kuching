@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Menu, X, MapPin, Clock, Users, Shield, Phone, Mail, Facebook, Instagram, CheckCircle } from 'lucide-react';
+import Image from 'next/image';
 
 const TravelLandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,7 +34,7 @@ const TravelLandingPage = () => {
         subtitle: 'Pontianak - Kuching',
         description: 'Nikmati perjalanan lintas negara yang aman, nyaman, dan terpercaya dengan Toyota Hiace Commuter premium kami',
         cta: 'Pesan Sekarang via WhatsApp',
-        whatsapp: '+62 812-3456-7890'
+        whatsapp: '+6285822593523'
       },
       about: {
         title: 'Tentang Kami',
@@ -47,50 +48,18 @@ const TravelLandingPage = () => {
         ]
       },
       vehicle: {
+        image: '/images/avanza.webp',
         title: 'Kendaraan Kami',
-        subtitle: 'Toyota Hiace Commuter Premium',
+        subtitle: 'New Avanza',
         specs: [
-          'Kapasitas: 10-14 penumpang',
+          'Kapasitas: 4-5 penumpang',
           'AC sejuk & nyaman',
-          'Kursi empuk dengan sandaran',
-          'Audio system premium',
           'Bagasi luas untuk bagasi',
           'Kondisi terawat & bersih'
         ],
-        comfort: 'Kenyamanan Terjamin',
-        comfortDesc: 'Kendaraan kami selalu dalam kondisi prima dengan perawatan rutin dan standar kebersihan tinggi'
+
       },
-      price: {
-        title: 'Harga & Paket',
-        subtitle: 'Pilihan Terbaik untuk Perjalanan Anda',
-        packages: [
-          {
-            name: 'Charter Pribadi',
-            price: 'Rp 2.500.000',
-            features: [
-              'Kapasitas hingga 10 orang',
-              'Bebas tentukan jadwal',
-              'Door to door service',
-              'Termasuk dokumen perbatasan',
-              'Air mineral gratis'
-            ]
-          },
-          {
-            name: 'Sharing Trip',
-            price: 'Rp 350.000',
-            unit: '/orang',
-            features: [
-              'Jadwal keberangkatan tetap',
-              'Penjemputan di titik kumpul',
-              'Maksimal 1 koper/orang',
-              'Termasuk dokumen perbatasan',
-              'Snack & air mineral'
-            ],
-            popular: true
-          }
-        ],
-        note: 'Harga sudah termasuk biaya dokumen imigrasi & tol'
-      },
+
       footer: {
         company: 'Layanan transportasi lintas negara terpercaya sejak 2019',
         quick: 'Link Cepat',
@@ -112,7 +81,7 @@ const TravelLandingPage = () => {
         subtitle: 'Pontianak - Kuching',
         description: 'Enjoy a safe, comfortable, and trusted cross-border journey with our premium Toyota Hiace Commuter',
         cta: 'Book Now via WhatsApp',
-        whatsapp: '+60 12-345-6789'
+        whatsapp: '+6285822593523'
       },
       about: {
         title: 'About Us',
@@ -127,49 +96,16 @@ const TravelLandingPage = () => {
       },
       vehicle: {
         title: 'Our Vehicle',
-        subtitle: 'Toyota Hiace Commuter Premium',
+        subtitle: 'New Avanza',
         specs: [
           'Capacity: 10-14 passengers',
           'Cool & comfortable AC',
-          'Soft seats with backrest',
-          'Premium audio system',
           'Spacious luggage compartment',
           'Well-maintained & clean'
         ],
-        comfort: 'Comfort Guaranteed',
-        comfortDesc: 'Our vehicles are always in prime condition with regular maintenance and high cleanliness standards'
+
       },
-      price: {
-        title: 'Price & Packages',
-        subtitle: 'Best Choice for Your Journey',
-        packages: [
-          {
-            name: 'Private Charter',
-            price: 'MYR 450',
-            features: [
-              'Capacity up to 10 people',
-              'Flexible schedule',
-              'Door to door service',
-              'Border documents included',
-              'Free mineral water'
-            ]
-          },
-          {
-            name: 'Sharing Trip',
-            price: 'MYR 65',
-            unit: '/person',
-            features: [
-              'Fixed departure schedule',
-              'Pick up at meeting point',
-              'Max 1 suitcase/person',
-              'Border documents included',
-              'Snacks & mineral water'
-            ],
-            popular: true
-          }
-        ],
-        note: 'Price includes immigration documents & toll fees'
-      },
+
       footer: {
         company: 'Trusted cross-border transportation service since 2019',
         quick: 'Quick Links',
@@ -180,9 +116,79 @@ const TravelLandingPage = () => {
     }
   };
 
+  const kendaraan = [
+    {
+      image: '/images/avanza.webp',
+      title: 'Kendaraan Kami',
+      subtitle: 'New Avanza',
+      price : 'Rp 5.500.000',
+      specs: [
+        'Include Driver & Fuel',
+        'BBM Pulang Pergi',
+        'Roadtax & Insurance Malaysia',
+        'Free Mineral',
+        'Kapasitas: 4-5 penumpang',
+        'AC sejuk & nyaman',
+        'Kondisi terawat & bersih'
+      ],
+
+    },
+    {
+      image: '/images/reborn.webp',
+      title: 'Kendaraan Kami',
+      subtitle: 'Innova Reborn',
+      price : 'Rp 6.500.000',
+      specs: [
+         'Include Driver & Fuel',
+        'BBM Pulang Pergi',
+        'Roadtax & Insurance Malaysia',
+        'Free Mineral',
+        'Kapasitas: 6-7 penumpang',
+        'AC sejuk & nyaman',
+        'Kondisi terawat & bersih'
+      ],
+
+    },
+    {
+      image: '/images/hiace.webp',
+      title: 'Kendaraan Kami',
+      subtitle: 'Toyota Hiace Commuter',
+      price : 'Rp 8.000.000',
+      specs: [
+         'Include Driver & Fuel',
+        'BBM Pulang Pergi',
+        'Roadtax & Insurance Malaysia',
+        'Free Mineral',
+        'Kapasitas: 10-14 penumpang',
+        'AC sejuk & nyaman',
+        
+        'Kondisi terawat & bersih'
+      ],
+
+    },
+    {
+      image: '/images/fortuner.webp',
+      title: 'Kendaraan Kami',
+      subtitle: 'Fortuner GR Sport',
+      price : 'Rp 7.500.000',
+      specs: [
+         'Include Driver & Fuel',
+        'BBM Pulang Pergi',
+        'Roadtax & Insurance Malaysia',
+        'Free Mineral',
+        'Kapasitas: 6-7 penumpang',
+        'AC sejuk & nyaman',
+    
+        'Kondisi terawat & bersih',
+        'Mobil Premium'
+      ],
+
+    },
+  ]
+
   const t = isIndonesia ? content.id : content.en;
 
-  const scrollToSection = (id:string) => {
+  const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
   };
@@ -264,7 +270,7 @@ const TravelLandingPage = () => {
               {t.hero.description}
             </p>
             <a
-              href={`https://wa.me/${t.hero.whatsapp.replace(/[^0-9]/g, '')}`}
+              href={`https://wa.me/6285822593523?text=Halo%20Travel%20Pontianak-Kuching%20Saya%20Ingin%20Memesan%20Paket%20Perjalanan%20Ke%20Kuching`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-3 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all transform hover:scale-105 shadow-2xl"
@@ -322,56 +328,47 @@ const TravelLandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-              {t.vehicle.title}
+              Kendaraan Kami
             </h2>
-            <p className="text-xl text-blue-600 font-semibold">{t.vehicle.subtitle}</p>
+            <p className="text-xl text-blue-600 font-semibold">Booking Mobil Pilihan Anda</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-8 rounded-3xl shadow-2xl">
+            {kendaraan.map((kend, index) => (
+                   <div key={index} className="bg-gradient-to-br from-blue-600 to-blue-800 p-8 rounded-3xl shadow-2xl">
               <div className="bg-white bg-opacity-10 rounded-2xl p-8 backdrop-blur-sm">
                 <div className="text-center mb-8">
-                  <div className="text-6xl mb-4">🚐</div>
-                  <h3 className="text-2xl font-bold text-blue-500  mb-2">Toyota Hiace Commuter</h3>
+                  <div className="text-6xl mb-4"> <Image
+                    src={kend.image}
+                    width={500}
+                    height={500}
+                    alt="Picture of the author"
+                    className='object-cover m-auto h-fit  w-fit rounded-xl'
+                  /></div>
+                  <h3 className="text-2xl font-bold text-blue-500  mb-2">{kend.subtitle}</h3>
+                  <p className='text-3xl  font-bold text-blue-800'>{kend.price}</p>
                 </div>
+                
                 <div className="space-y-3">
-                  {t.vehicle.specs.map((spec, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span className="text text-lg">{spec}</span>
-                    </div>
-                  ))}
+                {kend.specs.map((spec, idx) => (
+                  <div className="flex items-start space-x-3" key={idx}>
+                    <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span className="text text-lg">{spec}</span>
+                  </div>
+                ))}
                 </div>
               </div>
             </div>
 
-            <div className="space-y-6">
-              <div className="bg-white p-8 rounded-2xl shadow-xl">
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                  {t.vehicle.comfort}
-                </h3>
-                <p className="text-gray-600 leading-relaxed text-lg">
-                  {t.vehicle.comfortDesc}
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-blue-50 p-6 rounded-xl text-center">
-                  <div className="text-4xl font-bold text-blue-600 mb-2">10-14</div>
-                  <div className="text-gray-600">{isIndonesia ? 'Penumpang' : 'Passengers'}</div>
-                </div>
-                <div className="bg-blue-50 p-6 rounded-xl text-center">
-                  <div className="text-4xl font-bold text-blue-600 mb-2">5+</div>
-                  <div className="text-gray-600">{isIndonesia ? 'Tahun' : 'Years'}</div>
-                </div>
-              </div>
-            </div>
+            ))}
+       
+            
           </div>
         </div>
       </section>
 
       {/* Price Section */}
-      <section id="price" className="py-20 bg-white">
+      {/* <section id="price" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
@@ -426,7 +423,7 @@ const TravelLandingPage = () => {
 
           <p className="text-center text-gray-600 text-sm italic">{t.price.note}</p>
         </div>
-      </section>
+      </section> */}
 
       {/* Footer */}
       <footer id="contact" className="bg-gray-900 text-white py-12">
@@ -458,13 +455,13 @@ const TravelLandingPage = () => {
             <div>
               <h4 className="font-bold mb-4">{t.footer.contact}</h4>
               <div className="space-y-3">
-                <a href={`https://wa.me/${t.hero.whatsapp.replace(/[^0-9]/g, '')}`} className="flex items-center space-x-2 text-gray-400 hover:text-white">
+                <a href={`https://wa.me/6285822593523?text=Halo%20Travel%20Pontianak-Kuching%20Saya%20Ingin%20Memesan%20Paket%20Perjalanan%20Ke%20Kuching`} className="flex items-center space-x-2 text-gray-400 hover:text-white">
                   <Phone className="w-5 h-5" />
                   <span>{t.hero.whatsapp}</span>
                 </a>
-                <a href="mailto:info@ptkkch.com" className="flex items-center space-x-2 text-gray-400 hover:text-white">
+                <a href="mailto:argroup.ptk@gmail.com" className="flex items-center space-x-2 text-gray-400 hover:text-white">
                   <Mail className="w-5 h-5" />
-                  <span>info@ptkkch.com</span>
+                  <span>argroup.ptk@gmail.com</span>
                 </a>
               </div>
               <div className="mt-4">
