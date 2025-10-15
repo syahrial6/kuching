@@ -124,7 +124,7 @@ const TravelLandingPage = () => {
       price : 'Rp 5.500.000',
       specs: [
         'Include Driver & Fuel',
-        'BBM Pulang Pergi',
+        'BBM Selama Perjalanan',
         'Roadtax & Insurance Malaysia',
         'Free Mineral',
         'Kapasitas: 4-5 penumpang',
@@ -140,7 +140,7 @@ const TravelLandingPage = () => {
       price : 'Rp 6.500.000',
       specs: [
          'Include Driver & Fuel',
-        'BBM Pulang Pergi',
+        'BBM Selama Perjalanan',
         'Roadtax & Insurance Malaysia',
         'Free Mineral',
         'Kapasitas: 6-7 penumpang',
@@ -156,7 +156,7 @@ const TravelLandingPage = () => {
       price : 'Rp 8.000.000',
       specs: [
          'Include Driver & Fuel',
-        'BBM Pulang Pergi',
+        'BBM Selama Perjalanan',
         'Roadtax & Insurance Malaysia',
         'Free Mineral',
         'Kapasitas: 10-14 penumpang',
@@ -173,7 +173,7 @@ const TravelLandingPage = () => {
       price : 'Rp 7.500.000',
       specs: [
          'Include Driver & Fuel',
-        'BBM Pulang Pergi',
+          'BBM Selama Perjalanan',
         'Roadtax & Insurance Malaysia',
         'Free Mineral',
         'Kapasitas: 6-7 penumpang',
