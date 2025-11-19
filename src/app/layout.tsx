@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Travel Pontianak Kuching",
-  description: "Penyedia Jasa Layanan Travel Pontianak Kuching Dengan Harga Terbaik",
+  description:
+    "Penyedia Jasa Layanan Travel Pontianak Kuching Dengan Harga Terbaik",
 };
 
 export default function RootLayout({
