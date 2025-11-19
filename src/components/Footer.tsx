@@ -28,7 +28,10 @@ export function Footer() {
   ];
 
   return (
-    <footer className="pt-20 pb-10 mt-24 bg-[#08080b] border-t border-white/10 relative overflow-hidden">
+    <footer
+      id="contact"
+      className="pt-20 pb-10 mt-24 bg-[#08080b] border-t border-white/10 relative overflow-hidden"
+    >
       {/* Glow Effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-purple-500/5 to-transparent blur-3xl"></div>
 
@@ -42,7 +45,7 @@ export function Footer() {
             <p className="text-gray-400 text-sm mt-1">by Artha Royal Group</p>
 
             <p className="mt-6 text-gray-400 text-sm leading-relaxed">
-              Layanan transportasi lintas negara premium sejak 2019.
+              Layanan transportasi lintas negara premium sejak 2022.
               Mengutamakan kenyamanan, keamanan, dan profesionalitas.
             </p>
 
