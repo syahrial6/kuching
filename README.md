@@ -1,125 +1,113 @@
-🚗 Sigma Delta – Travel Pontianak ⇆ Kuching & Rental Mobil Premium
+# 🚗 Sigma Delta — Travel Pontianak ⇆ Kuching & Rental Mobil Premium
 
-Proyek ini adalah website resmi Sigma Delta, layanan transportasi lintas negara yang menyediakan:
+Sigma Delta adalah layanan transportasi lintas negara yang menyediakan perjalanan **Pontianak ⇆ Kuching**, serta layanan **rental mobil premium** dengan unit terbaik dan pelayanan profesional.
 
-✈️ Travel Pontianak → Kuching PP
+Website ini dibuat untuk menampilkan informasi layanan, galeri dokumentasi, sistem pesan cepat via WhatsApp, dan fitur-fitur lain yang mendukung pengalaman pengguna.
 
-🚘 Jasa Rental Mobil Premium
+---
 
-🎞️ Galeri dokumentasi perjalanan
+## ✨ Fitur Utama
 
-📱 Integrasi WhatsApp multi-admin
+### 🔹 Travel Pontianak → Kuching
+Layanan travel door-to-door dengan armada nyaman, driver berpengalaman, dan proses perjalanan yang aman serta resmi.
 
-🎨 UI modern, interaktif, dan responsif
+### 🔹 Rental Mobil Pontianak
+Pilihan mobil mulai dari Avanza, Reborn, hingga Fortuner. Mendukung opsi lepas kunci atau include driver.
 
-Dibangun menggunakan Next.js App Router, Tailwind CSS, dan Framer Motion untuk menghasilkan pengalaman pengguna yang cepat, smooth, dan profesional.
+### 🔹 Galeri Dokumentasi
+Galeri foto & video dengan *auto-detect orientation* (portrait / landscape), modal preview, dan tampilan yang responsif.
 
-🚀 Tech Stack
+### 🔹 Floating WhatsApp Multi-Admin
+Tombol WhatsApp melayang dengan animasi:
+- Klik untuk membuka pilihan  
+- Admin 1 & Admin 2 tersedia  
+- Animasi smooth menggunakan Framer Motion
 
-Next.js 14+ (App Router)
+### 🔹 Desain Modern & Responsif
+UI berbasis:
+- **Next.js App Router**
+- **Tailwind CSS**
+- **Framer Motion**
+- **Lucide Icons**
 
-React 18
+---
 
-Tailwind CSS
+## 🚀 Tech Stack
 
-Framer Motion
+- **Next.js 14+**
+- **React 18**
+- **Tailwind CSS**
+- **TypeScript**
+- **Framer Motion**
+- **Next/Image Optimization**
 
-Lucide Icons
+---
 
-TypeScript
+## 📁 Struktur Proyek
 
-Image Optimization (Next/Image)
+```
+/app
+├── page.tsx                 → Halaman utama (Hero, Travel, Rental)
+├── travel                   → Section Travel Kuching
+├── vehicles                 → Halaman Rental Mobil
+├── gallery                  → Galeri foto/video
+├── components               → Komponen reusable
+└── hooks                    → Custom hooks (misal: useImageOrientation)
 
-🔧 Menjalankan Project
+/public
+└── documentation/pictures   → File gambar dokumentasi
+```
 
-Pastikan Node.js sudah terinstall, kemudian jalankan:
+---
 
+## 🔧 Cara Menjalankan Project
+
+Pastikan Node.js sudah terinstall, lalu jalankan:
+
+```bash
 npm install
+```
 
-Lalu mulai development server:
+Untuk menjalankan server development:
 
+```bash
 npm run dev
+```
 
-Buka di browser:
+Akses melalui browser:
 
 👉 http://localhost:3000
 
-Website akan auto-reload setiap kali kamu melakukan perubahan pada file.
+Perubahan akan otomatis ter-*update* berkat fitur hot reload.
 
-📁 Struktur Proyek (Ringkas)
-/app
-├── page.tsx → Halaman utama (Hero, Card Travel/Rental)
-├── travel → Section Travel Kuching
-├── vehicles → Halaman Rental Mobil
-├── gallery → Halaman galeri foto/video
-├── components → Semua komponen reusable
-└── hooks → Custom hooks (contoh: useImageOrientation)
+---
 
-/public
-└── documentation/pictures → Foto-foto dokumentasi galeri
+## 🛠 Development Notes
 
-✨ Fitur Utama
-🔹 1. Hero Section Modern
+- Semua file foto diletakkan di `/public/documentation/pictures`
+- Sistem galeri otomatis mendeteksi portrait/landscape
+- Video dapat ditambahkan kapan saja (struktur sudah siap)
+- Styling menggunakan Tailwind agar cepat dan konsisten
+- Animasi menggunakan Framer Motion
 
-Font besar, gradient text, animasi smooth, dan dua kartu utama:
+---
 
-Travel Kuching
+## 📦 Deployment
 
-Rental Mobil
-
-🔹 2. Travel & Rental Card System
-
-Clean, responsive, dan menggunakan efek glassmorphism.
-
-🔹 3. Galeri Foto dengan Auto-Detect Portrait/Landscape
-
-Sistem pintar yang:
-
-Menyesuaikan ukuran tampilan
-
-Menjaga foto portrait tetap tampil penuh
-
-Modal preview full screen
-
-🔹 4. Floating WhatsApp Multi-Admin
-
-Tombol melayang
-
-Klik → muncul pilihan Admin 1 & Admin 2
-
-Animasi halus (Framer Motion)
-
-🔹 5. Footer Profesional
-
-Navigasi smooth-scroll
-
-Kontak dengan tooltip admin
-
-Branding Sigma Delta
-
-🛠️ Development Notes
-
-Semua gambar berada di:
-/public/documentation/pictures
-
-Support portrait dan landscape otomatis
-
-Video dapat ditambahkan kapan saja (sudah disiapkan dalam struktur)
-
-Penggunaan Tailwind untuk styling cepat dan konsisten
-
-📦 Deploy
-
-Cara paling mudah: Vercel
+Rekomendasi platform deploy: **Vercel**
 
 Deploy langsung:
 
-👉 https://vercel.com/new
+https://vercel.com/new
 
-Dokumentasi deploy Next.js:
+Dokumentasi:
+
 https://nextjs.org/docs/app/building-your-application/deploying
 
-👨‍💻 Creator
+---
 
-Website dan sistem dirancang oleh:
-Eunoia Digital Creations
+## 👨‍💻 Developer
+
+Website & sistem dikembangkan oleh:
+
+**Eunoia Digital Creations**
