@@ -13,55 +13,26 @@ export const TravelKuching = () => {
     {
       image: "/images/hiace.webp",
       subtitle: "Toyota Hiace",
-      price: "Rp 7.500.000",
-      specs: [
-        "3 Hari 2 Malam",
-        "Include Driver & Fuel",
-        "BBM Selama Perjalanan",
-        "Roadtax & Insurance",
-        "Free Mineral",
-        "Kapasitas: 10-14 penumpang",
-      ],
+      price: 7500000,
+      specs: ["3 Hari 2 Malam", "Include Driver & Fuel", "Roadtax & Insurance"],
     },
     {
       image: "/images/fortuner.webp",
       subtitle: "Fortuner GR",
-      price: "Rp 7.000.000",
-      specs: [
-        "3 Hari 2 Malam",
-        "Include Driver & Fuel",
-        "BBM Selama Perjalanan",
-        "Roadtax & Insurance",
-        "Free Mineral",
-        "Kapasitas: 6-7 penumpang",
-        "Mobil Premium",
-      ],
+      price: 7000000,
+      specs: ["3 Hari 2 Malam", "Include Driver & Fuel", "Roadtax & Insurance"],
     },
     {
       image: "/images/reborn.webp",
       subtitle: "Innova Reborn",
-      price: "Rp 6.000.000",
-      specs: [
-        "3 Hari 2 Malam",
-        "Include Driver & Fuel",
-        "BBM Selama Perjalanan",
-        "Roadtax & Insurance",
-        "Free Mineral",
-        "Kapasitas: 6-7 penumpang",
-      ],
+      price: 6000000,
+      specs: ["3 Hari 2 Malam", "Include Driver & Fuel", "Roadtax & Insurance"],
     },
     {
       image: "/images/avanza.webp",
       subtitle: "New Avanza",
-      price: "Rp 5.000.000",
-      specs: [
-        "3 Hari 2 Malam",
-        "Include Driver & Fuel",
-        "BBM Selama Perjalanan",
-        "Roadtax & Insurance",
-        "Free Mineral",
-        "Kapasitas: 4-5 penumpang",
-      ],
+      price: 5000000,
+      specs: ["3 Hari 2 Malam", "Include Driver & Fuel", "Roadtax & Insurance"],
     },
   ];
 
@@ -117,7 +88,7 @@ export const TravelKuching = () => {
                       </h3>
 
                       <p className="text-3xl font-bold text-yellow-500 mt-1">
-                        {kend.price}
+                        Rp {kend.price.toLocaleString("id-ID")}
                       </p>
 
                       <div className="mt-5 space-y-2">
@@ -135,32 +106,37 @@ export const TravelKuching = () => {
                       {/* Buttons */}
                       <div className="mt-6 flex flex-col gap-3">
                         <motion.a
-                          href="https://wa.me/62895321866545"
+                          href={`https://wa.me/62895321866545?text=${encodeURIComponent(
+                            `Halo Sigma Delta, saya mau Paket Travel ${kend.subtitle}.`
+                          )}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.04 }}
                           whileTap={{ scale: 0.96 }}
                           className="
-      w-full block text-center py-3 rounded-2xl 
-      bg-white/10 border border-white/20 text-white font-semibold 
-      backdrop-blur-md transition
-      hover:bg-green-500/20 hover:border-green-400/30
-    "
+    w-full block text-center py-3 rounded-2xl 
+    bg-white/10 border border-white/20 text-white font-semibold 
+    backdrop-blur-md transition
+    hover:bg-green-500/20 hover:border-green-400/30
+  "
                         >
                           Hubungi Admin 1
                         </motion.a>
+
                         <motion.a
-                          href="https://wa.me/6285822593523"
+                          href={`https://wa.me/6285822593523?text=${encodeURIComponent(
+                            `Halo Sigma Delta, saya mau Paket Travel ${kend.subtitle}.`
+                          )}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.04 }}
                           whileTap={{ scale: 0.96 }}
                           className="
-      w-full block text-center py-3 rounded-2xl 
-      bg-white/10 border border-white/20 text-white font-semibold 
-      backdrop-blur-md transition
-      hover:bg-blue-500/20 hover:border-blue-400/30
-    "
+    w-full block text-center py-3 rounded-2xl 
+    bg-white/10 border border-white/20 text-white font-semibold 
+    backdrop-blur-md transition
+    hover:bg-blue-500/20 hover:border-blue-400/30
+  "
                         >
                           Hubungi Admin 2
                         </motion.a>

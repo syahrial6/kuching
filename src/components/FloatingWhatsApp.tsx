@@ -14,16 +14,18 @@ export const FloatingWhatsApp = () => {
           <>
             {/* Admin 1 */}
             <motion.a
-              href="https://wa.me/62895321866545"
+              href={`https://wa.me/62895321866545?text=${encodeURIComponent(
+                "Halo Admin 1 Sigma Delta, saya mau nanya."
+              )}`}
               target="_blank"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 30 }}
               className="
-                flex items-center gap-3 px-4 py-3 rounded-2xl bg-white/10 
-                backdrop-blur-xl border border-white/20 text-white shadow-xl 
-                hover:bg-green-500/20 hover:border-green-400/40 transition
-              "
+    flex items-center gap-3 px-4 py-3 rounded-2xl bg-white/10 
+    backdrop-blur-xl border border-white/20 text-white shadow-xl 
+    hover:bg-green-500/20 hover:border-green-400/40 transition
+  "
             >
               <User className="w-5 h-5 text-green-400" />
               Admin 1
@@ -31,16 +33,18 @@ export const FloatingWhatsApp = () => {
 
             {/* Admin 2 */}
             <motion.a
-              href="https://wa.me/6285822593523"
+              href={`https://wa.me/6285822593523?text=${encodeURIComponent(
+                "Halo Admin 2 Sigma Delta, saya mau nanya."
+              )}`}
               target="_blank"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 30 }}
               className="
-                flex items-center gap-3 px-4 py-3 rounded-2xl bg-white/10 
-                backdrop-blur-xl border border-white/20 text-white shadow-xl 
-                hover:bg-blue-500/20 hover:border-blue-400/40 transition
-              "
+    flex items-center gap-3 px-4 py-3 rounded-2xl bg-white/10 
+    backdrop-blur-xl border border-white/20 text-white shadow-xl 
+    hover:bg-blue-500/20 hover:border-blue-400/40 transition
+  "
             >
               <Users className="w-5 h-5 text-blue-400" />
               Admin 2

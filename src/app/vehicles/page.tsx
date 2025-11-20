@@ -8,7 +8,6 @@ import {
   Users,
   Gauge,
   Fuel,
-  Phone,
   ArrowLeft,
 } from "lucide-react";
 import { useState } from "react";
@@ -25,7 +24,7 @@ export default function VehicleSection() {
       transmisi: "Automatic",
       bbm: "Bensin",
       status: "Tersedia",
-      price: "Rp 4.000.000 / hari",
+      price: 4000000,
     },
     {
       image: "/images/hiace.webp",
@@ -34,7 +33,7 @@ export default function VehicleSection() {
       transmisi: "Manual",
       bbm: "Diesel",
       status: "Tersedia",
-      price: "Rp 1.500.000 / hari",
+      price: 1500000,
     },
     {
       image: "/images/fortuner.webp",
@@ -43,7 +42,7 @@ export default function VehicleSection() {
       transmisi: "Automatic",
       bbm: "Diesel",
       status: "Tersedia",
-      price: "Rp 1.500.000 / hari",
+      price: 1500000,
     },
     {
       image: "/images/zenix_hybrid.webp",
@@ -52,7 +51,7 @@ export default function VehicleSection() {
       transmisi: "Automatic",
       bbm: "Bensin",
       status: "Tersedia",
-      price: "Rp 700.000 / hari",
+      price: 700000,
     },
     {
       image: "/images/zenix_gasoline.webp",
@@ -61,7 +60,7 @@ export default function VehicleSection() {
       transmisi: "Automatic",
       bbm: "Bensin",
       status: "Tersedia",
-      price: "Rp 600.000 / hari",
+      price: 600000,
     },
     {
       image: "/images/reborn.webp",
@@ -70,7 +69,7 @@ export default function VehicleSection() {
       transmisi: "Automatic",
       bbm: "Bensin",
       status: "Tersedia",
-      price: "Rp 500.000 / hari",
+      price: 500000,
     },
     {
       image: "/images/avanza.webp",
@@ -79,7 +78,7 @@ export default function VehicleSection() {
       transmisi: "Automatic",
       bbm: "Bensin",
       status: "Tersedia",
-      price: "Rp 350.000 / hari",
+      price: 350000,
     },
     {
       image: "/images/avanza_facelift.webp",
@@ -88,7 +87,7 @@ export default function VehicleSection() {
       transmisi: "Manual",
       bbm: "Bensin",
       status: "Tersedia",
-      price: "Rp 300.000 / hari",
+      price: 300000,
     },
     {
       image: "/images/brio_rs.webp",
@@ -97,7 +96,7 @@ export default function VehicleSection() {
       transmisi: "Automatic",
       bbm: "Bensin",
       status: "Tersedia",
-      price: "Rp 350.000 / hari",
+      price: 350000,
     },
   ];
 
@@ -169,8 +168,11 @@ export default function VehicleSection() {
                     </h3>
 
                     {/* PRICE */}
-                    <p className="text-cyan-300 font-bold text-xl mt-1">
-                      {item.price}
+                    <p className="font-bold text-xl mt-1">
+                      <span className="text-cyan-300">
+                        Rp {item.price.toLocaleString("id-ID")}
+                      </span>
+                      <span className="text-white"> / hari</span>
                     </p>
 
                     {/* ICON GRID */}
@@ -215,37 +217,39 @@ export default function VehicleSection() {
                     {/* BUTTONS ADMIN */}
                     <div className="mt-auto pt-6 space-y-3">
                       <motion.a
-                        href="https://wa.me/62895321866545"
+                        href={`https://wa.me/62895321866545?text=${encodeURIComponent(
+                          `Halo Sigma Delta, saya mau rental mobil ${item.nama}.`
+                        )}`}
                         target="_blank"
-                        whileHover={{ scale: 1.05 }}
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.04 }}
+                        whileTap={{ scale: 0.96 }}
                         className="
-                            flex items-center justify-center gap-2 py-3 rounded-xl
-                            bg-green-500/20 text-green-300 border border-green-400/40
-                            backdrop-blur-xl font-semibold
-                            hover:bg-green-500/30 hover:border-green-300
-                            hover:shadow-[0_0_14px_rgba(34,197,94,0.7)]
-                            transition-all
-                          "
+    w-full block text-center py-3 rounded-2xl 
+    bg-white/10 border border-white/20 text-white font-semibold 
+    backdrop-blur-md transition
+    hover:bg-green-500/20 hover:border-green-400/30
+  "
                       >
-                        <Phone className="w-5 h-5" />
-                        Pesan ke Admin 1
+                        Hubungi Admin 1
                       </motion.a>
 
                       <motion.a
-                        href="https://wa.me/6285822593523"
+                        href={`https://wa.me/6285822593523?text=${encodeURIComponent(
+                          `Halo Sigma Delta, saya mau rental mobil ${item.nama}.`
+                        )}`}
                         target="_blank"
-                        whileHover={{ scale: 1.05 }}
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.04 }}
+                        whileTap={{ scale: 0.96 }}
                         className="
-                            flex items-center justify-center gap-2 py-3 rounded-xl
-                            bg-blue-500/20 text-blue-300 border border-blue-400/40
-                            backdrop-blur-xl font-semibold
-                            hover:bg-blue-500/30 hover:border-blue-300
-                            hover:shadow-[0_0_14px_rgba(59,130,246,0.7)]
-                            transition-all
-                        "
+    w-full block text-center py-3 rounded-2xl 
+    bg-white/10 border border-white/20 text-white font-semibold 
+    backdrop-blur-md transition
+    hover:bg-blue-500/20 hover:border-blue-400/30
+  "
                       >
-                        <Phone className="w-5 h-5" />
-                        Pesan ke Admin 2
+                        Hubungi Admin 2
                       </motion.a>
                     </div>
                   </div>
