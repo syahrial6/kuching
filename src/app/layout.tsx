@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import type { ReactNode } from "react";
 import Script from "next/script";
 import "./globals.css";
 
@@ -18,29 +17,10 @@ export const metadata: Metadata = {
   title: "Sigma Delta: Travel Pontianak - Kuching",
   description:
     "Jasa layanan travel Pontianak - Kuching dengan armada terbaik dan harga terjangkau.",
-  keywords: [
-    "travel pontianak kuching",
-    "travel kuching pontianak",
-    "paket travel kuching",
-    "travel malaysia pontianak",
-    "travel border kuching",
-    "jasa travel pontianak",
-  ],
-  alternates: {
-    canonical: "https://www.travelkuching.com",
-  },
-  openGraph: {
-    title: "Sigma Delta: Travel Pontianak - Kuching",
-    description:
-      "Jasa layanan travel Pontianak - Kuching dengan armada terbaik dan harga terjangkau.",
-    url: "https://www.travelkuching.com",
-    siteName: "Sigma Delta",
-    type: "website",
-  },
 };
 
 interface RootLayoutProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
@@ -49,11 +29,29 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* --- GOOGLE TAG: ADS (AW-...) --- */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17755416559"
+          strategy="afterInteractive"
+        />
+
+        <Script id="gtag-aw" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17755416559');
+          `}
+        </Script>
+
+        {/* --- GOOGLE ANALYTICS GA4 (G-...) --- */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-RNH2ESWQWZ"
           strategy="afterInteractive"
         />
-        <Script id="gtag-init" strategy="afterInteractive">
+
+        <Script id="gtag-ga4" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

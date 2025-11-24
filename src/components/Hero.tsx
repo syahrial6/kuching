@@ -2,6 +2,7 @@
 
 import { motion as m } from "framer-motion";
 import { Shield, MapPin, Clock, Users } from "lucide-react";
+import { FaInstagram, FaTiktok } from "react-icons/fa";
 
 export function Hero() {
   return (
@@ -14,7 +15,7 @@ export function Hero() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="inline-block px-4 py-1 mb-6 text-sm border border-white/20 rounded-full text-gray-300"
+        className="inline-block px-4 py-1 mb-3 text-sm border border-white/20 rounded-full text-gray-300"
       >
         Travel & Rental Mobil Resmi · Sejak 2022
       </m.div>
@@ -31,6 +32,30 @@ export function Hero() {
           Terpercaya
         </span>
       </m.h1>
+
+      {/* Social Icons (moved below title) */}
+      <m.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="flex items-center justify-center gap-4 mt-6"
+      >
+        {/* Instagram */}
+        <a
+          href="https://www.instagram.com/argroup.ptk/"
+          className="group p-2 rounded-full bg-white/10 border border-white/20 transition hover:bg-[#E1306C]/20"
+        >
+          <FaInstagram className="w-5 h-5 text-white group-hover:text-[#E1306C] transition" />
+        </a>
+
+        {/* TikTok */}
+        <a
+          href="#"
+          className="group p-2 rounded-full bg-white/10 border border-white/20 transition hover:bg-[#69C9D0]/20"
+        >
+          <FaTiktok className="w-5 h-5 text-white group-hover:text-[#69C9D0] transition" />
+        </a>
+      </m.div>
 
       <m.div
         initial={{ opacity: 0, y: 20 }}
