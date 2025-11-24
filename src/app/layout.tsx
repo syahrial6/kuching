@@ -17,7 +17,26 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Sigma Delta: Travel Pontianak - Kuching",
   description:
-    "Penyedia Jasa Layanan Travel Pontianak Kuching Dengan Harga Terbaik",
+    "Jasa layanan travel Pontianak - Kuching dengan armada terbaik dan harga terjangkau.",
+  keywords: [
+    "travel pontianak kuching",
+    "travel kuching pontianak",
+    "paket travel kuching",
+    "travel malaysia pontianak",
+    "travel border kuching",
+    "jasa travel pontianak",
+  ],
+  alternates: {
+    canonical: "https://www.travelkuching.com",
+  },
+  openGraph: {
+    title: "Sigma Delta: Travel Pontianak - Kuching",
+    description:
+      "Jasa layanan travel Pontianak - Kuching dengan armada terbaik dan harga terjangkau.",
+    url: "https://www.travelkuching.com",
+    siteName: "Sigma Delta",
+    type: "website",
+  },
 };
 
 interface RootLayoutProps {
