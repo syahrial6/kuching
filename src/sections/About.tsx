@@ -42,19 +42,19 @@ export function About() {
               desc: "Memiliki izin resmi dan standar operasional yang jelas.",
             },
             {
+              icon: Medal,
+              title: "Layanan Premium",
+              desc: "Armada bersih, nyaman, dan driver profesional.",
+            },
+            {
               icon: Building2,
               title: "Berpengalaman",
               desc: "Lebih dari 5 tahun melayani rute Pontianak – Kuching.",
             },
             {
               icon: ThumbsUp,
-              title: "Ribuan Pelanggan Puas",
+              title: "Pelanggan Puas",
               desc: "Kami dipercaya oleh berbagai kalangan setiap harinya.",
-            },
-            {
-              icon: Medal,
-              title: "Layanan Premium",
-              desc: "Armada bersih, nyaman, dan driver profesional.",
             },
           ].map((item, i) => (
             <m.div

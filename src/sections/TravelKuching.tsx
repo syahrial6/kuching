@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { CheckCircle, X } from "lucide-react";
 import { useState } from "react";
-import { TiltCard } from "./TiltCard";
+import { TiltCard } from "../components/TiltCard";
 
 export const TravelKuching = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);

@@ -9,7 +9,10 @@ import {
   Gauge,
   Fuel,
   ArrowLeft,
+  Check,
+  ChevronsUpDown,
 } from "lucide-react";
+import { Listbox } from "@headlessui/react";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -91,7 +94,7 @@ export default function VehicleSection() {
     },
     {
       image: "/images/brio_rs.webp",
-      nama: "Brio RS",
+      nama: "Honda Brio RS",
       kursi: "5 Penumpang",
       transmisi: "Automatic",
       bbm: "Bensin",
@@ -99,6 +102,27 @@ export default function VehicleSection() {
       price: 350000,
     },
   ];
+
+  // === FILTER STATES ===
+  const [filterTransmisi, setFilterTransmisi] = useState("Semua Transmisi");
+  const [filterBBM, setFilterBBM] = useState("Semua BBM");
+  const [filterHarga, setFilterHarga] = useState("Urutkan Harga");
+
+  // === LOGIKA FILTER ===
+  const filteredVehicles = kendaraan
+    .filter((item) =>
+      filterTransmisi === "Semua Transmisi"
+        ? true
+        : item.transmisi === filterTransmisi
+    )
+    .filter((item) =>
+      filterBBM === "Semua BBM" ? true : item.bbm === filterBBM
+    )
+    .sort((a, b) => {
+      if (filterHarga === "Harga Terendah") return a.price - b.price;
+      if (filterHarga === "Harga Tertinggi") return b.price - a.price;
+      return 0;
+    });
 
   return (
     <>
@@ -120,7 +144,7 @@ export default function VehicleSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-16"
           >
             <h2 className="text-5xl font-extrabold text-white">
               Daftar Unit Rental
@@ -130,9 +154,126 @@ export default function VehicleSection() {
             </p>
           </motion.div>
 
-          {/* LIST */}
+          {/* ================= FILTER BAR ================= */}
+          <div className="flex flex-wrap items-center gap-4 mb-14">
+            {/* FILTER TRANSMISI */}
+            <Listbox value={filterTransmisi} onChange={setFilterTransmisi}>
+              <div className="relative">
+                <Listbox.Button
+                  className="
+                  w-48 bg-white/5 border border-white/20 text-white px-4 py-2 rounded-xl 
+                  flex items-center justify-between backdrop-blur-xl"
+                >
+                  {filterTransmisi}
+                  <ChevronsUpDown className="w-4 h-4 opacity-60" />
+                </Listbox.Button>
+
+                <Listbox.Options
+                  className="
+                  absolute mt-2 w-48 bg-black/90 border border-white/20 rounded-xl 
+                  shadow-lg backdrop-blur-xl z-50 overflow-hidden"
+                >
+                  {["Semua Transmisi", "Automatic", "Manual"].map((opt) => (
+                    <Listbox.Option
+                      key={opt}
+                      value={opt}
+                      className="cursor-pointer px-4 py-2 hover:bg-white/10 text-white flex items-center gap-2"
+                    >
+                      {filterTransmisi === opt && (
+                        <Check className="w-4 h-4 text-cyan-400" />
+                      )}
+                      {opt}
+                    </Listbox.Option>
+                  ))}
+                </Listbox.Options>
+              </div>
+            </Listbox>
+
+            {/* FILTER BBM */}
+            <Listbox value={filterBBM} onChange={setFilterBBM}>
+              <div className="relative">
+                <Listbox.Button
+                  className="
+                  w-40 bg-white/5 border border-white/20 text-white px-4 py-2 rounded-xl 
+                  flex items-center justify-between backdrop-blur-xl"
+                >
+                  {filterBBM}
+                  <ChevronsUpDown className="w-4 h-4 opacity-60" />
+                </Listbox.Button>
+
+                <Listbox.Options
+                  className="
+                  absolute mt-2 w-40 bg-black/90 border border-white/20 rounded-xl 
+                  shadow-lg backdrop-blur-xl z-50 overflow-hidden"
+                >
+                  {["Semua BBM", "Bensin", "Diesel"].map((opt) => (
+                    <Listbox.Option
+                      key={opt}
+                      value={opt}
+                      className="cursor-pointer px-4 py-2 hover:bg-white/10 text-white flex items-center gap-2"
+                    >
+                      {filterBBM === opt && (
+                        <Check className="w-4 h-4 text-cyan-400" />
+                      )}
+                      {opt}
+                    </Listbox.Option>
+                  ))}
+                </Listbox.Options>
+              </div>
+            </Listbox>
+
+            {/* FILTER HARGA */}
+            <Listbox value={filterHarga} onChange={setFilterHarga}>
+              <div className="relative">
+                <Listbox.Button
+                  className="
+                  w-44 bg-white/5 border border-white/20 text-white px-4 py-2 rounded-xl 
+                  flex items-center justify-between backdrop-blur-xl"
+                >
+                  {filterHarga}
+                  <ChevronsUpDown className="w-4 h-4 opacity-60" />
+                </Listbox.Button>
+
+                <Listbox.Options
+                  className="
+                  absolute mt-2 w-44 bg-black/90 border border-white/20 rounded-xl 
+                  shadow-lg backdrop-blur-xl z-50 overflow-hidden"
+                >
+                  {["Urutkan Harga", "Harga Terendah", "Harga Tertinggi"].map(
+                    (opt) => (
+                      <Listbox.Option
+                        key={opt}
+                        value={opt}
+                        className="cursor-pointer px-4 py-2 hover:bg-white/10 text-white flex items-center gap-2"
+                      >
+                        {filterHarga === opt && (
+                          <Check className="w-4 h-4 text-cyan-400" />
+                        )}
+                        {opt}
+                      </Listbox.Option>
+                    )
+                  )}
+                </Listbox.Options>
+              </div>
+            </Listbox>
+
+            {/* RESET */}
+            <button
+              onClick={() => {
+                setFilterTransmisi("Semua Transmisi");
+                setFilterBBM("Semua BBM");
+                setFilterHarga("Urutkan Harga");
+              }}
+              className="px-4 py-2 bg-red-500/20 hover:bg-red-500/30 
+              border border-red-400/40 text-red-300 rounded-xl"
+            >
+              Reset
+            </button>
+          </div>
+
+          {/* ================= LIST KENDARAAN ================== */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
-            {kendaraan.map((item, index) => (
+            {filteredVehicles.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
@@ -142,10 +283,10 @@ export default function VehicleSection() {
               >
                 <div
                   className="flex flex-col h-full rounded-3xl overflow-hidden bg-white/5 
-    border border-white/20 backdrop-blur-xl 
-    shadow-[0_8px_30px_rgba(255,255,255,0.05)]
-    hover:shadow-[0_8px_40px_rgba(0,255,255,0.25)]
-    transition-all duration-300"
+                    border border-white/20 backdrop-blur-xl 
+                    shadow-[0_8px_30px_rgba(255,255,255,0.05)]
+                    hover:shadow-[0_8px_40px_rgba(0,255,255,0.25)]
+                    transition-all duration-300"
                 >
                   {/* IMAGE */}
                   <div
@@ -163,11 +304,11 @@ export default function VehicleSection() {
 
                   {/* CONTENT */}
                   <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-2xl font-bold text-white">
-                      {item.nama}
-                    </h3>
-
-                    {/* PRICE */}
+                    <div className="min-h-16">
+                      <h3 className="text-2xl font-bold text-white">
+                        {item.nama}
+                      </h3>
+                    </div>
                     <p className="font-bold text-xl mt-1">
                       <span className="text-cyan-300">
                         Rp {item.price.toLocaleString("id-ID")}
@@ -177,30 +318,30 @@ export default function VehicleSection() {
 
                     {/* ICON GRID */}
                     <div className="mt-6 grid grid-cols-2 gap-4 text-gray-300 text-sm">
-                      <div className="flex flex-col items-center bg-white/5 rounded-xl p-3 border border-white/10">
-                        <Users className="w-6 h-6 text-cyan-300 mb-1" />
+                      <div className="flex flex-col items-center bg-white/5 rounded-xl p-3 border border-white/10 h-20 justify-between">
+                        <Users className="w-6 h-6 text-cyan-300" />
                         <span className="text-center text-xs">
                           {item.kursi}
                         </span>
                       </div>
 
-                      <div className="flex flex-col items-center bg-white/5 rounded-xl p-3 border border-white/10">
-                        <Gauge className="w-6 h-6 text-cyan-300 mb-1" />
+                      <div className="flex flex-col items-center bg-white/5 rounded-xl p-3 border border-white/10 h-20 justify-between">
+                        <Gauge className="w-6 h-6 text-cyan-300" />
                         <span className="text-center text-xs">
                           {item.transmisi}
                         </span>
                       </div>
 
-                      <div className="flex flex-col items-center bg-white/5 rounded-xl p-3 border border-white/10">
-                        <Fuel className="w-6 h-6 text-cyan-300 mb-1" />
+                      <div className="flex flex-col items-center bg-white/5 rounded-xl p-3 border border-white/10 h-20 justify-between">
+                        <Fuel className="w-6 h-6 text-cyan-300" />
                         <span className="text-center text-xs">{item.bbm}</span>
                       </div>
 
-                      <div className="flex flex-col items-center bg-white/5 rounded-xl p-3 border border-white/10">
+                      <div className="flex flex-col items-center bg-white/5 rounded-xl p-3 border border-white/10 h-20 justify-between">
                         {item.status === "Tersedia" ? (
-                          <CheckCircle className="w-6 h-6 text-green-400 mb-1" />
+                          <CheckCircle className="w-6 h-6 text-green-400" />
                         ) : (
-                          <XCircle className="w-6 h-6 text-red-400 mb-1" />
+                          <XCircle className="w-6 h-6 text-red-400" />
                         )}
                         <span
                           className={`text-center text-xs ${
@@ -225,11 +366,11 @@ export default function VehicleSection() {
                         whileHover={{ scale: 1.04 }}
                         whileTap={{ scale: 0.96 }}
                         className="
-    w-full block text-center py-3 rounded-2xl 
-    bg-white/10 border border-white/20 text-white font-semibold 
-    backdrop-blur-md transition
-    hover:bg-green-500/20 hover:border-green-400/30
-  "
+                          w-full block text-center py-3 rounded-2xl 
+                          bg-white/10 border border-white/20 text-white font-semibold 
+                          backdrop-blur-md transition
+                          hover:bg-green-500/20 hover:border-green-400/30
+                        "
                       >
                         Hubungi Admin 1
                       </motion.a>
@@ -243,11 +384,11 @@ export default function VehicleSection() {
                         whileHover={{ scale: 1.04 }}
                         whileTap={{ scale: 0.96 }}
                         className="
-    w-full block text-center py-3 rounded-2xl 
-    bg-white/10 border border-white/20 text-white font-semibold 
-    backdrop-blur-md transition
-    hover:bg-blue-500/20 hover:border-blue-400/30
-  "
+                          w-full block text-center py-3 rounded-2xl 
+                          bg-white/10 border border-white/20 text-white font-semibold 
+                          backdrop-blur-md transition
+                          hover:bg-blue-500/20 hover:border-blue-400/30
+                        "
                       >
                         Hubungi Admin 2
                       </motion.a>
@@ -265,8 +406,7 @@ export default function VehicleSection() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="
-            fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-6"
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-6"
           onClick={() => setSelectedImage(null)}
         >
           <motion.div

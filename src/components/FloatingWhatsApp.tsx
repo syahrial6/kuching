@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
-import { MessageCircle, User, Users } from "lucide-react";
+import { User, Users } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
 export const FloatingWhatsApp = () => {
@@ -62,7 +63,7 @@ export const FloatingWhatsApp = () => {
           hover:bg-green-600 transition
         "
       >
-        <MessageCircle className="w-7 h-7" />
+        <FaWhatsapp className="w-7 h-7" />
       </motion.button>
     </div>
   );

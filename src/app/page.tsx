@@ -1,10 +1,10 @@
 "use client";
 
-import Navbar from "@/components/Navbar";
-import { Hero } from "@/components/Hero";
-import { About } from "@/components/About";
-import { TravelKuching } from "@/components/TravelKuching";
-import { Footer } from "@/components/Footer";
+import Navbar from "@/layouts/Navbar";
+import { Hero } from "@/sections/Hero";
+import { About } from "@/sections/About";
+import { TravelKuching } from "@/sections/TravelKuching";
+import { Footer } from "@/layouts/Footer";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 
 export default function Home() {
