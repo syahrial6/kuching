@@ -149,7 +149,7 @@ export function Footer() {
             © {new Date().getFullYear()} Sigma Delta. Semua hak dilindungi.
           </p>
           <p className="text-gray-500 text-xs mt-2">
-            Designed by
+            Designed by{" "}
             <span className="text-white font-semibold">
               Eunoia Digital Creations
             </span>
