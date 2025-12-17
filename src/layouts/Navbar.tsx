@@ -70,7 +70,7 @@ export default function Navbar() {
             height={42}
           />
           <div>
-            <h1 className="text-lg font-semibold text-yellow-500">
+            <h1 className="text-lg font-semibold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
               Sigma Delta
             </h1>
             <p className="text-[11px] text-gray-400 -mt-1">

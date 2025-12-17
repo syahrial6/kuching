@@ -26,10 +26,15 @@ export function About() {
           transition={{ duration: 0.7 }}
           className="mt-5 text-gray-400 max-w-3xl mx-auto leading-relaxed text-lg"
         >
-          <span className="text-yellow-500 font-semibold">Sigma Delta</span>{" "}
+          <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent font-semibold">
+            Sigma Delta
+          </span>{" "}
           adalah layanan transportasi resmi lintas negara yang telah beroperasi
-          sejak <span className="text-yellow-500 font-semibold">2022</span>.
-          Kami berkomitmen memberikan pengalaman perjalanan terbaik, aman, dan
+          sejak{" "}
+          <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent font-semibold">
+            2022
+          </span>
+          . Kami berkomitmen memberikan pengalaman perjalanan terbaik, aman, dan
           nyaman untuk setiap penumpang.
         </m.p>
 

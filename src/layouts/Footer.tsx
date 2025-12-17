@@ -28,10 +28,12 @@ export function Footer() {
         <div className="grid md:grid-cols-3 gap-14">
           {/* Brand */}
           <div>
-            <h3 className="text-3xl font-extrabold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
+            <h3 className="text-3xl font-extrabold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
               Sigma Delta
             </h3>
-            <p className="text-gray-400 text-sm mt-1">by Artha Royal Group</p>
+            <p className="text-gray-300 font-semibold text-sm mt-1">
+              by Artha Royal Group
+            </p>
             <p className="mt-6 text-gray-400 text-sm leading-relaxed">
               Layanan transportasi lintas negara premium sejak 2022.
               Mengutamakan kenyamanan, keamanan, dan profesionalitas.
@@ -150,7 +152,7 @@ export function Footer() {
           </p>
           <p className="text-gray-500 text-xs mt-2">
             Designed by{" "}
-            <span className="text-white font-semibold">
+            <span className="text-gray-400 font-semibold">
               Eunoia Digital Creations
             </span>
           </p>

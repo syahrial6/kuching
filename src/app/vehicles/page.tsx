@@ -11,6 +11,7 @@ import {
   ArrowLeft,
   Check,
   ChevronsUpDown,
+  X,
 } from "lucide-react";
 import { Listbox } from "@headlessui/react";
 import { useState } from "react";
@@ -22,6 +23,7 @@ export default function VehicleSection() {
   const kendaraan = [
     {
       image: "/images/alphard_transformer.webp",
+      brand: "Toyota",
       nama: "Alphard Transformer",
       kursi: "6 Penumpang",
       transmisi: "Automatic",
@@ -31,7 +33,8 @@ export default function VehicleSection() {
     },
     {
       image: "/images/hiace.webp",
-      nama: "Toyota Hiace",
+      brand: "Toyota",
+      nama: "Hiace Commuter",
       kursi: "14 Penumpang",
       transmisi: "Manual",
       bbm: "Diesel",
@@ -40,7 +43,8 @@ export default function VehicleSection() {
     },
     {
       image: "/images/fortuner.webp",
-      nama: "Fortuner GR",
+      brand: "Toyota",
+      nama: "Fortuner GR Sport",
       kursi: "7 Penumpang",
       transmisi: "Automatic",
       bbm: "Diesel",
@@ -49,7 +53,8 @@ export default function VehicleSection() {
     },
     {
       image: "/images/zenix_hybrid.webp",
-      nama: "Zenix Hybrid",
+      brand: "Toyota",
+      nama: "Innova Zenix HEV",
       kursi: "7 Penumpang",
       transmisi: "Automatic",
       bbm: "Bensin",
@@ -58,7 +63,8 @@ export default function VehicleSection() {
     },
     {
       image: "/images/zenix_gasoline.webp",
-      nama: "Zenix Gasoline",
+      brand: "Toyota",
+      nama: "Innova Zenix",
       kursi: "7 Penumpang",
       transmisi: "Automatic",
       bbm: "Bensin",
@@ -67,6 +73,7 @@ export default function VehicleSection() {
     },
     {
       image: "/images/reborn.webp",
+      brand: "Toyota",
       nama: "Innova Reborn",
       kursi: "7 Penumpang",
       transmisi: "Automatic",
@@ -76,6 +83,7 @@ export default function VehicleSection() {
     },
     {
       image: "/images/avanza.webp",
+      brand: "Toyota",
       nama: "New Avanza",
       kursi: "7 Penumpang",
       transmisi: "Automatic",
@@ -85,6 +93,7 @@ export default function VehicleSection() {
     },
     {
       image: "/images/avanza_facelift.webp",
+      brand: "Toyota",
       nama: "Avanza Facelift",
       kursi: "7 Penumpang",
       transmisi: "Manual",
@@ -94,7 +103,8 @@ export default function VehicleSection() {
     },
     {
       image: "/images/brio_rs.webp",
-      nama: "Honda Brio RS",
+      brand: "Honda",
+      nama: "Brio RS",
       kursi: "5 Penumpang",
       transmisi: "Automatic",
       bbm: "Bensin",
@@ -103,12 +113,10 @@ export default function VehicleSection() {
     },
   ];
 
-  // === FILTER STATES ===
   const [filterTransmisi, setFilterTransmisi] = useState("Semua Transmisi");
   const [filterBBM, setFilterBBM] = useState("Semua BBM");
   const [filterHarga, setFilterHarga] = useState("Urutkan Harga");
 
-  // === LOGIKA FILTER ===
   const filteredVehicles = kendaraan
     .filter((item) =>
       filterTransmisi === "Semua Transmisi"
@@ -126,269 +134,233 @@ export default function VehicleSection() {
 
   return (
     <>
-      <section id="vehicles" className="py-32 relative">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="vehicles" className="py-24 lg:py-32 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* BACK BUTTON */}
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-white/80 hover:text-white 
-              bg-white/5 border border-white/10 backdrop-blur-xl 
-              px-4 py-2 rounded-xl mb-10 transition hover:bg-white/10"
+            className="inline-flex items-center gap-2 mb-10 rounded-full px-5 py-2.5 bg-white/5 border border-white/10 backdrop-blur-md text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4" />
             Kembali ke Beranda
           </Link>
 
           {/* TITLE */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl font-extrabold text-white">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight">
               Daftar Unit Rental
             </h2>
-            <p className="mt-4 text-gray-400 text-lg">
-              Pilih kendaraan sesuai kebutuhan perjalanan Anda
+            <p className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
+              Pilih kendaraan premium terbaik untuk perjalanan Anda dengan
+              nyaman dan bergaya
             </p>
           </motion.div>
 
-          {/* ================= FILTER BAR ================= */}
-          <div className="flex flex-wrap items-center gap-4 mb-14">
-            {/* FILTER TRANSMISI */}
-            <Listbox value={filterTransmisi} onChange={setFilterTransmisi}>
-              <div className="relative">
-                <Listbox.Button
-                  className="
-                  w-48 bg-white/5 border border-white/20 text-white px-4 py-2 rounded-xl 
-                  flex items-center justify-between backdrop-blur-xl"
-                >
-                  {filterTransmisi}
-                  <ChevronsUpDown className="w-4 h-4 opacity-60" />
-                </Listbox.Button>
-
-                <Listbox.Options
-                  className="
-                  absolute mt-2 w-48 bg-black/90 border border-white/20 rounded-xl 
-                  shadow-lg backdrop-blur-xl z-50 overflow-hidden"
-                >
-                  {["Semua Transmisi", "Automatic", "Manual"].map((opt) => (
-                    <Listbox.Option
-                      key={opt}
-                      value={opt}
-                      className="cursor-pointer px-4 py-2 hover:bg-white/10 text-white flex items-center gap-2"
-                    >
-                      {filterTransmisi === opt && (
-                        <Check className="w-4 h-4 text-cyan-400" />
-                      )}
-                      {opt}
-                    </Listbox.Option>
-                  ))}
-                </Listbox.Options>
-              </div>
-            </Listbox>
-
-            {/* FILTER BBM */}
-            <Listbox value={filterBBM} onChange={setFilterBBM}>
-              <div className="relative">
-                <Listbox.Button
-                  className="
-                  w-40 bg-white/5 border border-white/20 text-white px-4 py-2 rounded-xl 
-                  flex items-center justify-between backdrop-blur-xl"
-                >
-                  {filterBBM}
-                  <ChevronsUpDown className="w-4 h-4 opacity-60" />
-                </Listbox.Button>
-
-                <Listbox.Options
-                  className="
-                  absolute mt-2 w-40 bg-black/90 border border-white/20 rounded-xl 
-                  shadow-lg backdrop-blur-xl z-50 overflow-hidden"
-                >
-                  {["Semua BBM", "Bensin", "Diesel"].map((opt) => (
-                    <Listbox.Option
-                      key={opt}
-                      value={opt}
-                      className="cursor-pointer px-4 py-2 hover:bg-white/10 text-white flex items-center gap-2"
-                    >
-                      {filterBBM === opt && (
-                        <Check className="w-4 h-4 text-cyan-400" />
-                      )}
-                      {opt}
-                    </Listbox.Option>
-                  ))}
-                </Listbox.Options>
-              </div>
-            </Listbox>
-
-            {/* FILTER HARGA */}
-            <Listbox value={filterHarga} onChange={setFilterHarga}>
-              <div className="relative">
-                <Listbox.Button
-                  className="
-                  w-44 bg-white/5 border border-white/20 text-white px-4 py-2 rounded-xl 
-                  flex items-center justify-between backdrop-blur-xl"
-                >
-                  {filterHarga}
-                  <ChevronsUpDown className="w-4 h-4 opacity-60" />
-                </Listbox.Button>
-
-                <Listbox.Options
-                  className="
-                  absolute mt-2 w-44 bg-black/90 border border-white/20 rounded-xl 
-                  shadow-lg backdrop-blur-xl z-50 overflow-hidden"
-                >
-                  {["Urutkan Harga", "Harga Terendah", "Harga Tertinggi"].map(
-                    (opt) => (
+          {/* FILTER BAR */}
+          <div className="flex flex-col sm:flex-row gap-4 mb-14">
+            <div className="flex flex-wrap gap-4">
+              <Listbox value={filterTransmisi} onChange={setFilterTransmisi}>
+                <div className="relative">
+                  <Listbox.Button className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gradient-to-r from-white/5 to-white/10 border border-white/20 backdrop-blur-md text-white text-sm font-medium transition hover:from-white/10 hover:to-white/20">
+                    {filterTransmisi}
+                    <ChevronsUpDown className="w-4 h-4 opacity-70" />
+                  </Listbox.Button>
+                  <Listbox.Options className="absolute z-50 mt-2 w-full rounded-2xl overflow-hidden bg-black/95 border border-white/20 backdrop-blur-xl shadow-2xl">
+                    {["Semua Transmisi", "Automatic", "Manual"].map((opt) => (
                       <Listbox.Option
                         key={opt}
                         value={opt}
-                        className="cursor-pointer px-4 py-2 hover:bg-white/10 text-white flex items-center gap-2"
+                        className="px-5 py-3 text-sm text-white cursor-pointer hover:bg-cyan-500/20 flex items-center gap-3 transition"
                       >
-                        {filterHarga === opt && (
+                        {filterTransmisi === opt && (
                           <Check className="w-4 h-4 text-cyan-400" />
                         )}
                         {opt}
                       </Listbox.Option>
-                    )
-                  )}
-                </Listbox.Options>
-              </div>
-            </Listbox>
+                    ))}
+                  </Listbox.Options>
+                </div>
+              </Listbox>
 
-            {/* RESET */}
+              <Listbox value={filterBBM} onChange={setFilterBBM}>
+                <div className="relative">
+                  <Listbox.Button className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gradient-to-r from-white/5 to-white/10 border border-white/20 backdrop-blur-md text-white text-sm font-medium transition hover:from-white/10 hover:to-white/20">
+                    {filterBBM}
+                    <ChevronsUpDown className="w-4 h-4 opacity-70" />
+                  </Listbox.Button>
+                  <Listbox.Options className="absolute z-50 mt-2 w-full rounded-2xl overflow-hidden bg-black/95 border border-white/20 backdrop-blur-xl shadow-2xl">
+                    {["Semua BBM", "Bensin", "Diesel"].map((opt) => (
+                      <Listbox.Option
+                        key={opt}
+                        value={opt}
+                        className="px-5 py-3 text-sm text-white cursor-pointer hover:bg-cyan-500/20 flex items-center gap-3 transition"
+                      >
+                        {filterBBM === opt && (
+                          <Check className="w-4 h-4 text-cyan-400" />
+                        )}
+                        {opt}
+                      </Listbox.Option>
+                    ))}
+                  </Listbox.Options>
+                </div>
+              </Listbox>
+
+              <Listbox value={filterHarga} onChange={setFilterHarga}>
+                <div className="relative">
+                  <Listbox.Button className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gradient-to-r from-white/5 to-white/10 border border-white/20 backdrop-blur-md text-white text-sm font-medium transition hover:from-white/10 hover:to-white/20">
+                    {filterHarga}
+                    <ChevronsUpDown className="w-4 h-4 opacity-70" />
+                  </Listbox.Button>
+                  <Listbox.Options className="absolute z-50 mt-2 w-full rounded-2xl overflow-hidden bg-black/95 border border-white/20 backdrop-blur-xl shadow-2xl">
+                    {["Urutkan Harga", "Harga Terendah", "Harga Tertinggi"].map(
+                      (opt) => (
+                        <Listbox.Option
+                          key={opt}
+                          value={opt}
+                          className="px-5 py-3 text-sm text-white cursor-pointer hover:bg-cyan-500/20 flex items-center gap-3 transition"
+                        >
+                          {filterHarga === opt && (
+                            <Check className="w-4 h-4 text-cyan-400" />
+                          )}
+                          {opt}
+                        </Listbox.Option>
+                      )
+                    )}
+                  </Listbox.Options>
+                </div>
+              </Listbox>
+            </div>
+
             <button
               onClick={() => {
                 setFilterTransmisi("Semua Transmisi");
                 setFilterBBM("Semua BBM");
                 setFilterHarga("Urutkan Harga");
               }}
-              className="px-4 py-2 bg-red-500/20 hover:bg-red-500/30 
-              border border-red-400/40 text-red-300 rounded-xl"
+              className="px-6 py-3 rounded-2xl bg-red-600/20 border border-red-500/40 text-red-300 font-medium text-sm hover:bg-red-600/30 transition"
             >
-              Reset
+              Reset Filter
             </button>
           </div>
 
-          {/* ================= LIST KENDARAAN ================== */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* GRID KENDARAAN */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {filteredVehicles.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.15 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group"
               >
-                <div
-                  className="flex flex-col h-full rounded-3xl overflow-hidden bg-white/5 
-                    border border-white/20 backdrop-blur-xl 
-                    shadow-[0_8px_30px_rgba(255,255,255,0.05)]
-                    hover:shadow-[0_8px_40px_rgba(0,255,255,0.25)]
-                    transition-all duration-300"
-                >
+                <div className="h-full flex flex-col rounded-3xl overflow-hidden bg-gradient-to-br from-white/5 to-white/10 border border-white/20 backdrop-blur-xl shadow-xl transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-3">
                   {/* IMAGE */}
                   <div
-                    className="relative cursor-zoom-in"
+                    className="relative aspect-[4/3] overflow-hidden cursor-zoom-in"
                     onClick={() => setSelectedImage(item.image)}
                   >
                     <Image
                       src={item.image}
-                      width={800}
-                      height={500}
+                      fill
                       alt={item.nama}
-                      className="w-full h-60 object-cover"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
 
                   {/* CONTENT */}
                   <div className="p-6 flex flex-col flex-grow">
-                    <div className="min-h-16">
-                      <h3 className="text-2xl font-bold text-white">
+                    {/* BRAND SLOT */}
+                    <div className="h-5">
+                      <span className="text-xs font-bold uppercase tracking-widest text-cyan-400">
+                        {item.brand}
+                      </span>
+                    </div>
+
+                    {/* TITLE SLOT */}
+                    <div className="mt-2">
+                      <h3 className="text-xl font-extrabold text-white leading-tight line-clamp-2">
                         {item.nama}
                       </h3>
                     </div>
-                    <p className="font-bold text-xl mt-1">
-                      <span className="text-cyan-300">
-                        Rp {item.price.toLocaleString("id-ID")}
-                      </span>
-                      <span className="text-white"> / hari</span>
-                    </p>
 
-                    {/* ICON GRID */}
-                    <div className="mt-6 grid grid-cols-2 gap-4 text-gray-300 text-sm">
-                      <div className="flex flex-col items-center bg-white/5 rounded-xl p-3 border border-white/10 h-20 justify-between">
-                        <Users className="w-6 h-6 text-cyan-300" />
-                        <span className="text-center text-xs">
-                          {item.kursi}
+                    {/* PRICE SLOT */}
+                    <div className="mt-2 h-9 flex items-center">
+                      <p className="text-2xl font-black">
+                        <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                          Rp{item.price.toLocaleString("id-ID")}
                         </span>
-                      </div>
-
-                      <div className="flex flex-col items-center bg-white/5 rounded-xl p-3 border border-white/10 h-20 justify-between">
-                        <Gauge className="w-6 h-6 text-cyan-300" />
-                        <span className="text-center text-xs">
-                          {item.transmisi}
+                        <span className="text-sm text-gray-400 ml-2">
+                          / hari
                         </span>
-                      </div>
-
-                      <div className="flex flex-col items-center bg-white/5 rounded-xl p-3 border border-white/10 h-20 justify-between">
-                        <Fuel className="w-6 h-6 text-cyan-300" />
-                        <span className="text-center text-xs">{item.bbm}</span>
-                      </div>
-
-                      <div className="flex flex-col items-center bg-white/5 rounded-xl p-3 border border-white/10 h-20 justify-between">
-                        {item.status === "Tersedia" ? (
-                          <CheckCircle className="w-6 h-6 text-green-400" />
-                        ) : (
-                          <XCircle className="w-6 h-6 text-red-400" />
-                        )}
-                        <span
-                          className={`text-center text-xs ${
-                            item.status === "Tersedia"
-                              ? "text-green-400"
-                              : "text-red-400"
-                          }`}
-                        >
-                          {item.status}
-                        </span>
-                      </div>
+                      </p>
                     </div>
 
-                    {/* BUTTONS ADMIN */}
-                    <div className="mt-auto pt-6 space-y-3">
+                    {/* SPECS GRID */}
+                    <div className="mt-6 grid grid-cols-2 gap-4">
+                      {[
+                        { icon: Users, text: item.kursi },
+                        { icon: Gauge, text: item.transmisi },
+                        { icon: Fuel, text: item.bbm },
+                        {
+                          icon:
+                            item.status === "Tersedia" ? CheckCircle : XCircle,
+                          text: item.status,
+                          color:
+                            item.status === "Tersedia"
+                              ? "text-green-400"
+                              : "text-red-400",
+                        },
+                      ].map((spec, i) => (
+                        <div
+                          key={i}
+                          className="flex flex-col items-center gap-2 py-4 rounded-2xl bg-white/5 border border-white/10"
+                        >
+                          <spec.icon
+                            className={`w-6 h-6 ${
+                              spec.color || "text-cyan-400"
+                            }`}
+                          />
+                          <span className="text-xs text-gray-300 font-medium">
+                            {spec.text}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* BUTTONS */}
+                    <div className="mt-8 space-y-4">
+                      {/* ADMIN 1 */}
                       <motion.a
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
                         href={`https://wa.me/62895321866545?text=${encodeURIComponent(
                           `Halo Sigma Delta, saya mau rental mobil ${item.nama}.`
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        whileHover={{ scale: 1.04 }}
-                        whileTap={{ scale: 0.96 }}
-                        className="
-                          w-full block text-center py-3 rounded-2xl 
-                          bg-white/10 border border-white/20 text-white font-semibold 
-                          backdrop-blur-md transition
-                          hover:bg-green-500/20 hover:border-green-400/30
-                        "
+                        className="block w-full rounded-2xl py-4 text-center font-bold text-white bg-emerald-800/40 border border-emerald-600/60 backdrop-blur-md transition-all duration-400 hover:bg-emerald-700/50 hover:border-emerald-500/80 hover:shadow-lg hover:shadow-emerald-500/30"
                       >
                         Hubungi Admin 1
                       </motion.a>
 
+                      {/* ADMIN 2 */}
                       <motion.a
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
                         href={`https://wa.me/6285822593523?text=${encodeURIComponent(
                           `Halo Sigma Delta, saya mau rental mobil ${item.nama}.`
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        whileHover={{ scale: 1.04 }}
-                        whileTap={{ scale: 0.96 }}
-                        className="
-                          w-full block text-center py-3 rounded-2xl 
-                          bg-white/10 border border-white/20 text-white font-semibold 
-                          backdrop-blur-md transition
-                          hover:bg-blue-500/20 hover:border-blue-400/30
-                        "
+                        className="block w-full rounded-2xl py-4 text-center font-bold text-white bg-teal-800/40 border border-teal-600/60 backdrop-blur-md transition-all duration-400 hover:bg-teal-700/50 hover:border-teal-500/80 hover:shadow-lg hover:shadow-teal-500/30"
                       >
                         Hubungi Admin 2
                       </motion.a>
@@ -406,32 +378,28 @@ export default function VehicleSection() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-6"
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-8"
           onClick={() => setSelectedImage(null)}
         >
           <motion.div
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="relative max-w-6xl w-full"
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-5xl w-full"
           >
             <Image
               src={selectedImage}
-              alt="Preview"
-              width={1400}
-              height={900}
-              className="rounded-3xl w-full object-contain max-h-[90vh]"
+              alt="Preview kendaraan"
+              width={1600}
+              height={1000}
+              className="rounded-3xl object-contain max-h-[90vh] shadow-2xl"
             />
-
             <button
               onClick={() => setSelectedImage(null)}
-              className="
-                absolute top-4 right-4 bg-black/70 w-12 h-12 rounded-full
-                flex items-center justify-center border border-white/20
-                hover:bg-white/10 transition
-              "
+              className="absolute -top-12 right-0 bg-white/10 backdrop-blur rounded-full p-3 hover:bg-white/20 transition"
             >
-              <XCircle className="text-white w-8 h-8" />
+              <X className="w-6 h-6 text-white" />
             </button>
           </motion.div>
         </motion.div>
