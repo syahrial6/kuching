@@ -131,7 +131,7 @@ export const TravelKuching = () => {
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                         href={`https://wa.me/62895321866545?text=${encodeURIComponent(
-                          `Halo Sigma Delta, saya mau Paket Travel ${kend.subtitle}.`
+                          `Halo Sigma Delta, saya mau Paket Travel ${kend.subtitle}.`,
                         )}`}
                         target="_blank"
                         className="block w-full rounded-2xl py-3 text-center font-bold text-white bg-emerald-800/40 border border-emerald-600/60 backdrop-blur-md hover:bg-emerald-700/50 hover:border-emerald-500/80 hover:shadow-lg hover:shadow-emerald-500/30 transition"
@@ -143,7 +143,7 @@ export const TravelKuching = () => {
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                         href={`https://wa.me/6285822593523?text=${encodeURIComponent(
-                          `Halo Sigma Delta, saya mau Paket Travel ${kend.subtitle}.`
+                          `Halo Sigma Delta, saya mau Paket Travel ${kend.subtitle}.`,
                         )}`}
                         target="_blank"
                         className="block w-full rounded-2xl py-3 text-center font-bold text-white bg-teal-800/40 border border-teal-600/60 backdrop-blur-md hover:bg-teal-700/50 hover:border-teal-500/80 hover:shadow-lg hover:shadow-teal-500/30 transition"
