@@ -148,7 +148,7 @@ export const TravelKuching = () => {
                         target="_blank"
                         className="block w-full rounded-2xl py-3 text-center font-bold text-white bg-teal-800/40 border border-teal-600/60 backdrop-blur-md hover:bg-teal-700/50 hover:border-teal-500/80 hover:shadow-lg hover:shadow-teal-500/30 transition"
                       >
-                        Hubungi Admin 2
+                        Hubungi Admin
                       </motion.a>
                     </div>
                   </div>
