@@ -27,7 +27,7 @@ export function About() {
           className="mt-5 text-gray-400 max-w-3xl mx-auto leading-relaxed text-lg"
         >
           <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent font-semibold">
-            Sigma Delta
+            Sigma Borneo
           </span>{" "}
           adalah layanan transportasi resmi lintas negara yang telah beroperasi
           sejak{" "}

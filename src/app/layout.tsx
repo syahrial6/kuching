@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sigma Delta: Travel Pontianak - Kuching",
+  title: "Sigma Borneo: Travel Pontianak - Kuching",
   description:
     "Jasa layanan travel Pontianak - Kuching dengan armada terbaik dan harga terjangkau.",
 };
