@@ -9,22 +9,29 @@ Website ini dibuat untuk menampilkan informasi layanan, galeri dokumentasi, sist
 ## ✨ Fitur Utama
 
 ### 🔹 Travel Pontianak → Kuching
+
 Layanan travel door-to-door dengan armada nyaman, driver berpengalaman, dan proses perjalanan yang aman serta resmi.
 
 ### 🔹 Rental Mobil Pontianak
+
 Pilihan mobil mulai dari Avanza, Reborn, hingga Fortuner. Mendukung opsi lepas kunci atau include driver.
 
 ### 🔹 Galeri Dokumentasi
-Galeri foto & video dengan *auto-detect orientation* (portrait / landscape), modal preview, dan tampilan yang responsif.
+
+Galeri foto & video dengan _auto-detect orientation_ (portrait / landscape), modal preview, dan tampilan yang responsif.
 
 ### 🔹 Floating WhatsApp Multi-Admin
+
 Tombol WhatsApp melayang dengan animasi:
-- Klik untuk membuka pilihan  
-- Admin 1 & Admin 2 tersedia  
+
+- Klik untuk membuka pilihan
+- Admin 1 & Admin 2 tersedia
 - Animasi smooth menggunakan Framer Motion
 
 ### 🔹 Desain Modern & Responsif
+
 UI berbasis:
+
 - **Next.js App Router**
 - **Tailwind CSS**
 - **Framer Motion**
@@ -78,7 +85,7 @@ Akses melalui browser:
 
 👉 http://localhost:3000
 
-Perubahan akan otomatis ter-*update* berkat fitur hot reload.
+Perubahan akan otomatis ter-_update_ berkat fitur hot reload.
 
 ---
 
@@ -89,20 +96,6 @@ Perubahan akan otomatis ter-*update* berkat fitur hot reload.
 - Video dapat ditambahkan kapan saja (struktur sudah siap)
 - Styling menggunakan Tailwind agar cepat dan konsisten
 - Animasi menggunakan Framer Motion
-
----
-
-## 📦 Deployment
-
-Rekomendasi platform deploy: **Vercel**
-
-Deploy langsung:
-
-https://vercel.com/new
-
-Dokumentasi:
-
-https://nextjs.org/docs/app/building-your-application/deploying
 
 ---
 
