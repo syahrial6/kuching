@@ -16,7 +16,23 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Sigma Borneo: Travel Pontianak - Kuching",
   description:
-    "Jasa layanan travel Pontianak - Kuching dengan armada terbaik dan harga terjangkau.",
+    "Jasa travel Pontianak ke Kuching terpercaya. Harga murah, door to door, berangkat setiap hari via Entikong. Booking sekarang dengan Sigma Borneo.",
+  keywords: [
+    "travel Pontianak Kuching",
+    "travel Pontianak ke Kuching",
+    "jasa travel Pontianak Kuching",
+    "travel Pontianak Kuching murah",
+    "travel Pontianak Kuching door to door",
+  ],
+  openGraph: {
+    title: "Sigma Borneo: Travel Pontianak - Kuching",
+    description:
+      "Jasa travel Pontianak ke Kuching door to door, harga terjangkau, berangkat setiap hari.",
+    url: "https://www.travelkuching.com/",
+    siteName: "Sigma Borneo",
+    locale: "id_ID",
+    type: "website",
+  },
 };
 
 interface RootLayoutProps {
@@ -25,38 +41,39 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html lang="id">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* --- GOOGLE TAG: ADS (AW-...) --- */}
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17755416559"
-          strategy="afterInteractive"
-        />
-
-        <Script id="gtag-aw" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-17755416559');
-          `}
-        </Script>
-
-        {/* --- GOOGLE ANALYTICS GA4 (G-...) --- */}
+        {/* Google Tag (GA4 + Ads digabung) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-RNH2ESWQWZ"
           strategy="afterInteractive"
         />
 
-        <Script id="gtag-ga4" strategy="afterInteractive">
+        <Script id="gtag" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
+
             gtag('config', 'G-RNH2ESWQWZ');
+            gtag('config', 'AW-17755416559');
+          `}
+        </Script>
+
+        {/* Structured Data */}
+        <Script id="schema" type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "Sigma Borneo",
+              "description": "Jasa travel Pontianak ke Kuching",
+              "areaServed": "Pontianak - Kuching",
+              "url": "https://www.travelkuching.com/",
+              "telephone": "+6285822593523"
+            }
           `}
         </Script>
 
