@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,9 +21,9 @@ export default function Navbar() {
       for (const id of sections) {
         const el = document.getElementById(id);
         if (!el) continue;
-        const top = el.getBoundingClientRect().top;
 
-        if (top <= 150) current = id;
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= 200) current = id;
       }
 
       setActiveSection(current);
@@ -32,9 +34,17 @@ export default function Navbar() {
   }, []);
 
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const y = el.getBoundingClientRect().top + window.scrollY - 80;
+
+    window.scrollTo({
+      top: y,
+      behavior: "smooth",
+    });
+
     setIsOpen(false);
-    setActiveSection(id);
   };
 
   type MenuItem =
@@ -51,59 +61,79 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 transition-all duration-700 rounded-[2.5rem] ${
         scrolled
-          ? "bg-[#0d0d12]/90 backdrop-blur-xl border-b border-white/10"
-          : "bg-transparent"
+          ? "bg-black/40 backdrop-blur-2xl border border-white/10 py-2 shadow-2xl"
+          : "bg-transparent py-4"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center h-20">
-        {/* Logo */}
-        <div
-          className="flex items-center gap-3 cursor-pointer"
-          onClick={() => scrollToSection("hero")}
-        >
-          <Image
-            src="/images/logo.png"
-            alt="Sigma Borneo Logo"
-            width={42}
-            height={42}
-          />
-          <div>
-            <h1 className="text-lg font-semibold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-              Sigma Borneo
-            </h1>
-            <p className="text-[11px] text-gray-400 -mt-1">
-              by Artha Royal Group
-            </p>
-          </div>
-        </div>
+      <div className="px-8 flex justify-between items-center h-14">
+        {/* Logo Section */}
+<div
+  className="flex items-center gap-3 cursor-pointer group"
+  onClick={() => scrollToSection("hero")}
+>
+  {/* Logo Icon dengan efek Glassmorphism */}
+  <div className="relative overflow-hidden rounded-full p-1.5 bg-white/5 group-hover:bg-white/10 transition-all duration-300 border border-white/5">
+    <Image 
+      src="/images/logo.png" 
+      alt="Logo" 
+      width={32} 
+      height={32} 
+      className="object-contain"
+    />
+  </div>
+
+  {/* Text Logo */}
+  <div className="hidden sm:flex flex-col justify-center">
+    <h1 className="text-[15px] font-bold text-cyan-400/80 tracking-tight leading-none">
+      Sigma Borneo
+    </h1>
+    <div className="flex items-center gap-1 mt-0.5">
+      <span className="text-[9px] text-gray-500 font-medium uppercase tracking-wider">
+        by
+      </span>
+      <span className="text-[9px] text-white font-bold uppercase tracking-widest">
+        Artha Royal Group
+      </span>
+    </div>
+  </div>
+</div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-1 bg-white/5 p-1 rounded-[2rem] border border-white/5">
           {menuItems.map((item) =>
             item.type === "link" ? (
-              <a
+              <Link
                 key={item.label}
                 href={item.href}
-                className="px-5 py-2 rounded-2xl text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-300"
+                className="px-6 py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors"
               >
                 {item.label}
-              </a>
+              </Link>
             ) : (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`
-        px-5 py-2 rounded-2xl font-medium transition-all duration-300
-        ${
-          activeSection === item.id
-            ? "text-white bg-white/10 border border-white/20"
-            : "text-gray-300 hover:text-white hover:bg-white/5"
-        }
-      `}
+                className={`relative px-6 py-2 text-sm font-medium transition-colors ${
+                  activeSection === item.id
+                    ? "text-white"
+                    : "text-gray-400 hover:text-white"
+                }`}
               >
-                {item.label}
+                <span className="relative z-10">{item.label}</span>
+
+                {activeSection === item.id && (
+                  <motion.div
+                    layoutId="liquid-pill"
+                    className="absolute inset-0 bg-gradient-to-tr from-white/20 to-white/5 border border-white/20 rounded-full"
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 28,
+                    }}
+                  />
+                )}
               </button>
             )
           )}
@@ -112,43 +142,58 @@ export default function Navbar() {
         {/* Mobile Toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-white"
+          className="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-white"
         >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-[#0d0d12]/95 border-t border-white/10 p-6 space-y-4">
-          {menuItems.map((item) =>
-            item.type === "link" ? (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="block w-full text-left px-4 py-3 rounded-xl text-gray-300 hover:bg-white/5"
-              >
-                {item.label}
-              </a>
-            ) : (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`w-full text-left px-4 py-3 rounded-xl transition-all
-        ${
-          activeSection === item.id
-            ? "bg-white/10 text-white border border-white/20"
-            : "text-gray-300 hover:bg-white/5"
-        }
-      `}
-              >
-                {item.label}
-              </button>
-            )
-          )}
-        </div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -20 }}
+            className="absolute top-20 left-0 w-full p-4 md:hidden"
+          >
+            <div className="bg-black/80 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] p-6 space-y-2 shadow-2xl">
+              {menuItems.map((item) =>
+                item.type === "link" ? (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block px-6 py-4 rounded-full text-gray-300"
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className="relative w-full text-left px-6 py-4 rounded-full text-gray-300"
+                  >
+                    <span className="relative z-10">{item.label}</span>
+
+                    {activeSection === item.id && (
+                      <motion.div
+                        layoutId="liquid-pill-mobile"
+                        className="absolute inset-0 bg-white/10 border border-white/20 rounded-full"
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                  </button>
+                )
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
