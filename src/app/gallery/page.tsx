@@ -31,6 +31,10 @@ export default function GalleryPage() {
     { type: "photo", src: "/documentation/pictures/documentation-13.jpg", span: "md:col-span-2" },
     { type: "photo", src: "/documentation/pictures/documentation-14.jpg" },
     { type: "photo", src: "/documentation/pictures/documentation-15.jpg" },
+    { type: "photo", src: "/documentation/pictures/documentation-16.jpg" },
+    { type: "photo", src: "/documentation/pictures/documentation-17.jpg", span: "md:col-span-2" },
+    { type: "photo", src: "/documentation/pictures/documentation-18.jpg"},
+    { type: "photo", src: "/documentation/pictures/documentation-19.jpg" },
   ];
 
   return (

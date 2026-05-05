@@ -23,15 +23,16 @@ export default function VehicleSection() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const kendaraan = useMemo(() => [
-    { image: "/images/alphard_transformer.webp", brand: "TOYOTA", nama: "Alphard Transformer", type: "Luxury", kursi: "6", transmisi: "AT", bbm: "Bensin", price: 4000000, includeDriver: false },
+    { image: "/images/alphard.webp", brand: "TOYOTA", nama: "Alphard Transformer", type: "Luxury", kursi: "6", transmisi: "AT", bbm: "Bensin", price: 4000000, includeDriver: false },
     { image: "/images/hiace.webp", brand: "TOYOTA", nama: "Hiace Commuter", type: "Minibus", kursi: "14", transmisi: "MT", bbm: "Diesel", price: 1500000, includeDriver: true },
     { image: "/images/fortuner.webp", brand: "TOYOTA", nama: "Fortuner GR Sport", type: "SUV", kursi: "7", transmisi: "AT", bbm: "Diesel", price: 1500000, includeDriver: false },
+    { image: "/images/hilux.webp", brand: "TOYOTA", nama: "Hilux DC 4x4", type: "Adventure", kursi: "5", transmisi: "MT", bbm: "Diesel", price: 1500000, includeDriver: false },
     { image: "/images/zenix_hybrid.webp", brand: "TOYOTA", nama: "Innova Zenix HEV", type: "MPV", kursi: "7", transmisi: "AT", bbm: "Bensin", price: 700000, includeDriver: false },
     { image: "/images/zenix_gasoline.webp", brand: "TOYOTA", nama: "Innova Zenix", type: "MPV", kursi: "7", transmisi: "AT", bbm: "Bensin", price: 600000, includeDriver: false },
-    { image: "/images/reborn.webp", brand: "TOYOTA", nama: "Innova Reborn", type: "MPV", kursi: "7", transmisi: "AT", bbm: "Bensin", price: 500000, includeDriver: false },
+    { image: "/images/innova.webp", brand: "TOYOTA", nama: "Innova Reborn", type: "MPV", kursi: "7", transmisi: "AT", bbm: "Bensin", price: 500000, includeDriver: false },
     { image: "/images/avanza.webp", brand: "TOYOTA", nama: "New Avanza", type: "MPV", kursi: "7", transmisi: "AT/MT", bbm: "Bensin", price: 350000, includeDriver: false },
     { image: "/images/avanza_facelift.webp", brand: "TOYOTA", nama: "Avanza Facelift", type: "MPV", kursi: "7", transmisi: "MT", bbm: "Bensin", price: 300000, includeDriver: false },
-    { image: "/images/brio_rs.webp", brand: "HONDA", nama: "Brio RS", type: "City Car", kursi: "5", transmisi: "AT", bbm: "Bensin", price: 350000, includeDriver: false },
+    { image: "/images/brio.webp", brand: "HONDA", nama: "Brio RS", type: "City Car", kursi: "5", transmisi: "AT", bbm: "Bensin", price: 350000, includeDriver: false },
   ], []);
 
   const [filterTransmisi, setFilterTransmisi] = useState("Semua Transmisi");
@@ -86,7 +87,7 @@ export default function VehicleSection() {
 
               <div className="hidden lg:flex gap-10 border-l border-white/10 pl-10 mb-2">
                 <div>
-                  <span className="block text-3xl font-black text-white italic">9</span>
+                  <span className="block text-3xl font-black text-white italic">{kendaraan.length}</span>
                   <span className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-bold">Premium Fleet</span>
                 </div>
                 <div>

@@ -25,7 +25,7 @@ export const TravelKuching = () => {
       specs: ["3 Hari 2 Malam", "Include Driver & Fuel", "Roadtax & Insurance"],
     },
     {
-      image: "/images/reborn.webp",
+      image: "/images/innova.webp",
       brand: "Toyota",
       subtitle: "Innova Reborn",
       price: 6000000,
