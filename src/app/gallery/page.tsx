@@ -65,7 +65,7 @@ export default function GalleryPage() {
                 GALLERY <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-400 to-blue-600">FILES.</span>
               </h1>
               <p className="text-gray-500 mt-8 max-w-lg font-medium tracking-wide text-sm leading-relaxed">
-              Lebih dari sekadar transportasi, ini tentang kenangan. Jelajahi galeri momen dari mereka yang telah mempercayakan perjalanannya kepada kami.
+                Lebih dari sekadar transportasi, ini tentang kenangan. Jelajahi galeri momen dari mereka yang telah mempercayakan perjalanannya kepada kami.
               </p>
             </div>
             <div className="flex items-center gap-4 px-8 py-4 rounded-full bg-white/5 border border-white/10 text-cyan-400 text-[10px] font-black uppercase tracking-[0.2em] backdrop-blur-md shadow-2xl">
@@ -74,8 +74,8 @@ export default function GalleryPage() {
           </div>
         </m.div>
 
-        {/* BENTO GRID - FULL COVER */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[250px]">
+        {/* BENTO GRID - Perbaikan pada grid-flow-dense */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[250px] grid-flow-dense">
           {galleryData.map((item, i) => (
             <m.div
               key={i}
@@ -86,20 +86,27 @@ export default function GalleryPage() {
               onClick={() => setPreview(item)}
               className={`group relative rounded-[2rem] overflow-hidden border border-white/5 bg-[#0d0d12] cursor-pointer shadow-2xl transition-all duration-500 hover:border-cyan-500/50 ${item.span || ""}`}
             >
-              {/* Grid menggunakan object-cover agar padat dan rapi */}
               <div className="relative w-full h-full overflow-hidden">
                 {item.type === "photo" ? (
                   <Image
                     src={item.src}
-                    alt="Documentation"
+                    alt={`Documentation ${i + 1}`}
                     fill
+                    sizes="(max-width: 768px) 50vw, 25vw"
                     className="object-cover transition-transform duration-1000 group-hover:scale-110"
                   />
                 ) : (
-                  <video src={item.src} className="w-full h-full object-cover" muted autoPlay loop />
+                  <video 
+                    src={item.src} 
+                    className="w-full h-full object-cover" 
+                    muted 
+                    autoPlay 
+                    loop 
+                    playsInline 
+                  />
                 )}
                 
-                {/* Overlay saat hover */}
+                {/* Overlay */}
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-[2px]">
                    <div className="p-4 bg-white text-black rounded-full scale-50 group-hover:scale-100 transition-transform duration-500 shadow-2xl">
                       {item.type === "photo" ? <Maximize2 size={20} /> : <PlayCircle size={20} />}
@@ -111,7 +118,7 @@ export default function GalleryPage() {
         </div>
       </div>
 
-      {/* FULL PREVIEW MODAL - ORIGINAL ASPECT RATIO */}
+      {/* FULL PREVIEW MODAL */}
       <AnimatePresence>
         {preview && (
           <m.div 
@@ -125,13 +132,13 @@ export default function GalleryPage() {
             <m.button
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="absolute top-10 right-10 bg-cyan-500 text-black p-4 rounded-2xl z-[1000] hover:rotate-90 transition-all duration-300 shadow-2xl"
+              className="absolute top-6 right-6 md:top-10 md:right-10 bg-cyan-500 text-black p-4 rounded-2xl z-[1000] hover:rotate-90 transition-all duration-300 shadow-2xl"
               onClick={() => setPreview(null)}
             >
               <X size={24} strokeWidth={3} />
             </m.button>
 
-            {/* Content Preview menggunakan object-contain agar foto asli terlihat utuh */}
+            {/* Content Preview */}
             <m.div 
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -150,12 +157,18 @@ export default function GalleryPage() {
                   />
                 </div>
               ) : (
-                <video src={preview.src} controls autoPlay className="max-w-full max-h-full rounded-2xl shadow-2xl border border-white/10" />
+                <video 
+                  src={preview.src} 
+                  controls 
+                  autoPlay 
+                  playsInline
+                  className="max-w-full max-h-full rounded-2xl shadow-2xl border border-white/10" 
+                />
               )}
             </m.div>
             
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40 text-[9px] font-black tracking-[0.4em] uppercase">
-               Viewing Original Aspect Ratio
+                Viewing Original Aspect Ratio
             </div>
           </m.div>
         )}
