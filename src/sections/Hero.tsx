@@ -10,6 +10,8 @@ export function Hero() {
     <section
       id="hero"
       className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden bg-[#08080b]"
+      /* Menambahkan akselerasi hardware pada level section */
+      style={{ transform: 'translateZ(0)' }}
     >
       {/* Background Decorative Glows */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden">
@@ -24,7 +26,7 @@ export function Hero() {
           <m.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 px-3 py-1 md:px-4 md:py-1.5 mb-6 md:mb-8 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
+            className="inline-flex items-center gap-2 px-3 py-1 md:px-4 md:py-1.5 mb-6 md:mb-8 rounded-full bg-white/5 border border-white/10"
           >
             <Star size={12} className="text-cyan-400 fill-cyan-400" />
             <span className="text-[9px] md:text-[11px] uppercase tracking-[0.15em] text-gray-300 font-bold">
@@ -61,31 +63,30 @@ export function Hero() {
           {/* Card Travel */}
           <m.div
             whileHover={{ y: -5 }}
-            className="group relative p-8 md:p-12 rounded-[2.5rem] bg-white/[0.03] border border-white/10 hover:border-cyan-500/40 transition-all duration-500 overflow-hidden flex flex-col"
+            /* 
+               PERBAIKAN UTAMA: 
+               1. Menghapus backdrop-blur dari card utama karena ini penyebab bug di Chrome Android.
+               2. Menggunakan bg-white/[0.04] agar tetap terlihat semi-transparan.
+            */
+            className="group relative p-8 md:p-12 rounded-[2.5rem] bg-[#0d0d12] border border-white/10 hover:border-cyan-500/40 transition-all duration-500 overflow-hidden flex flex-col"
+            style={{ backfaceVisibility: 'hidden', transform: 'translateZ(0)' }}
           >
             <Globe className="absolute -bottom-10 -right-10 text-cyan-500/5 w-64 h-64 -rotate-12" />
             
             <div className="relative z-10 flex flex-col h-full">
-              {/* Header Section yang Disatukan */}
               <div className="flex mb-8">
+                {/* Badge tetap bisa pakai blur karena areanya kecil */}
                 <div className="inline-flex items-center gap-3 p-2 pr-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm group-hover:border-cyan-500/30 transition-colors">
-                  {/* Area Ikon */}
-                  <div className="w-10 h-10 rounded-xl bg-cyan-500/20 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+                  <div className="w-10 h-10 rounded-xl bg-cyan-500/20 flex items-center justify-center">
                     <MapPin className="text-cyan-400" size={20} />
                   </div>
-                  {/* Teks Badge */}
                   <div className="flex flex-col">
-                    <span className="text-[10px] text-cyan-400 font-black uppercase tracking-[0.15em] leading-none">
-                      Lintas Negara
-                    </span>
-                    <span className="text-[8px] text-gray-500 font-medium uppercase tracking-wider mt-1">
-                      Official Route
-                    </span>
+                    <span className="text-[10px] text-cyan-400 font-black uppercase tracking-[0.15em] leading-none">Lintas Negara</span>
+                    <span className="text-[8px] text-gray-500 font-medium uppercase tracking-wider mt-1">Official Route</span>
                   </div>
                 </div>
               </div>
 
-              {/* JUDUL: Diberi height konstan agar sejajar */}
               <div className="min-h-[140px] md:min-h-[180px] flex flex-col justify-end mb-4">
                 <h2 className="text-3xl md:text-5xl font-bold text-white italic uppercase leading-[1.1]">
                   Travel<br/>
@@ -94,7 +95,6 @@ export function Hero() {
               </div>
 
               <div className="flex-grow flex flex-col">
-                {/* TYPEWRITER: Diberi height tetap */}
                 <div className="h-10 mb-6">
                    <p className="text-gray-400 text-base md:text-lg flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
@@ -105,7 +105,6 @@ export function Hero() {
                   </p>
                 </div>
 
-                {/* TAGS */}
                 <div className="flex flex-wrap gap-2 mb-8">
                   {['3H2M', 'Include Driver', 'Include Bahan Bakar'].map((f) => (
                       <span key={f} className="px-3 py-1.5 rounded-full bg-white/5 border border-white/5 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
@@ -115,7 +114,6 @@ export function Hero() {
                 </div>
               </div>
 
-              {/* FOOTER */}
               <div className="pt-8 mt-auto border-t border-white/5 flex items-center justify-between">
                 <div className="flex flex-col">
                     <span className="text-gray-500 text-[10px] uppercase tracking-tighter">Mulai Dari</span>
@@ -131,31 +129,25 @@ export function Hero() {
           {/* Card Rental */}
           <m.div
             whileHover={{ y: -5 }}
-            className="group relative p-8 md:p-12 rounded-[2.5rem] bg-white/[0.03] border border-white/10 hover:border-purple-500/40 transition-all duration-500 overflow-hidden flex flex-col"
+            /* Perbaikan yang sama diterapkan di sini */
+            className="group relative p-8 md:p-12 rounded-[2.5rem] bg-[#0d0d12] border border-white/10 hover:border-purple-500/40 transition-all duration-500 overflow-hidden flex flex-col"
+            style={{ backfaceVisibility: 'hidden', transform: 'translateZ(0)' }}
           >
             <Car className="absolute -bottom-10 -right-10 text-purple-500/5 w-64 h-64 -rotate-12" />
 
             <div className="relative z-10 flex flex-col h-full">
               <div className="flex mb-8">
                 <div className="inline-flex items-center gap-3 p-2 pr-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm group-hover:border-purple-500/30 transition-colors">
-                  {/* Area Ikon dengan Glow */}
-                  <div className="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+                  <div className="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
                     <Users className="text-purple-400" size={20} />
                   </div>
-                  
-                  {/* Label Detail */}
                   <div className="flex flex-col">
-                    <span className="text-[10px] text-purple-400 font-black uppercase tracking-[0.15em] leading-none">
-                      Unit Premium
-                    </span>
-                    <span className="text-[8px] text-gray-500 font-medium uppercase tracking-wider mt-1">
-                      Ready 24/7 Service
-                    </span>
+                    <span className="text-[10px] text-purple-400 font-black uppercase tracking-[0.15em] leading-none">Unit Premium</span>
+                    <span className="text-[8px] text-gray-500 font-medium uppercase tracking-wider mt-1">Ready 24/7 Service</span>
                   </div>
                 </div>
               </div>
 
-              {/* JUDUL: Sama dengan sebelah agar simetris */}
               <div className="min-h-[140px] md:min-h-[180px] flex flex-col justify-end mb-4">
                 <h2 className="text-3xl md:text-5xl font-bold text-white italic uppercase leading-[1.1]">
                   Rental<br/>Mobil<br/>
@@ -164,7 +156,6 @@ export function Hero() {
               </div>
 
               <div className="flex-grow flex flex-col">
-                {/* TYPEWRITER: Tinggi harus sama */}
                 <div className="h-10 mb-6">
                    <p className="text-gray-400 text-base md:text-lg flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse" />
@@ -175,7 +166,6 @@ export function Hero() {
                   </p>
                 </div>
 
-                {/* TAGS */}
                 <div className="flex flex-wrap gap-2 mb-8">
                   {['24/7', 'Terawat', 'Lengkap'].map((f) => (
                       <span key={f} className="px-3 py-1.5 rounded-full bg-white/5 border border-white/5 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
@@ -185,7 +175,6 @@ export function Hero() {
                 </div>
               </div>
 
-              {/* FOOTER: Sama dengan sebelah */}
               <div className="pt-8 mt-auto border-t border-white/5 flex items-center justify-between">
                 <div className="flex flex-col">
                     <span className="text-gray-500 text-[10px] uppercase tracking-tighter">Mulai Dari</span>
