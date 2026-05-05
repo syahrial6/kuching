@@ -63,7 +63,7 @@ export default function VehicleSection() {
 
   return (
     <>
-      <section id="vehicles" className="py-24 relative bg-[#050508] overflow-hidden text-white">
+      <section id="vehicles" className="py-24 relative bg-[#050508] overflow-hidden text-white font-sans">
         {/* Background Decorative Text */}
         <div className="absolute top-40 left-1/2 -translate-x-1/2 text-[20vw] font-black text-white/[0.02] select-none pointer-events-none tracking-tighter italic">
           PREMIUM
@@ -72,7 +72,7 @@ export default function VehicleSection() {
         <div className="max-w-7xl mx-auto px-6 relative z-20">
           
           {/* HEADER SECTION */}
-          <div className="mb-20 relative">
+          <div className="mb-20">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
               <div className="max-w-2xl">
                 <Link href="/" className="group flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 hover:text-cyan-400 transition-all mb-8">
@@ -82,25 +82,14 @@ export default function VehicleSection() {
                   THE <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-400 to-blue-600">GARAGE.</span>
                 </h2>
                 <p className="mt-8 text-gray-400 text-sm md:text-base font-medium leading-relaxed tracking-wide">
-                  Armada terbaik untuk eksplorasi Pontianak. Dari <span className="text-white">Eco Hybrid</span> hingga <span className="text-white">VIP Transporter</span>.
+                  Armada terbaik untuk eksplorasi Pontianak.
                 </p>
-              </div>
-
-              <div className="hidden lg:flex gap-10 border-l border-white/10 pl-10 mb-2">
-                <div>
-                  <span className="block text-3xl font-black text-white italic">{kendaraan.length}</span>
-                  <span className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-bold">Premium Fleet</span>
-                </div>
-                <div>
-                  <span className="block text-3xl font-black text-cyan-500 italic">24/7</span>
-                  <span className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-bold">Quick Response</span>
-                </div>
               </div>
             </div>
           </div>
 
           {/* STICKY FILTER BAR */}
-          <div className="sticky top-6 z-[90] flex flex-wrap items-center gap-3 mb-24 p-2 bg-black/60 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-2xl">
+          <div className="sticky top-6 z-[90] flex flex-wrap items-center gap-3 mb-24 p-2 bg-[#0d0d12] border border-white/10 rounded-3xl shadow-2xl">
               {[
                 { state: filterTransmisi, set: setFilterTransmisi, options: ["Semua Transmisi", "Automatic", "Manual"] },
                 { state: filterBBM, set: setFilterBBM, options: ["Semua BBM", "Bensin", "Diesel"] },
@@ -123,10 +112,13 @@ export default function VehicleSection() {
                 </Listbox>
               ))}
 
+              {/* TOMBOL RESET - Muncul hanya saat filter aktif */}
               <AnimatePresence>
                 {isFiltered && (
                   <motion.button
-                    initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 10 }}
                     onClick={resetFilters}
                     className="flex items-center gap-2 px-6 py-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-500 text-[10px] font-black uppercase tracking-widest hover:bg-red-500 hover:text-white transition-all ml-auto"
                   >
@@ -136,22 +128,27 @@ export default function VehicleSection() {
               </AnimatePresence>
           </div>
 
-          {/* VEHICLE GRID */}
+          {/* VEHICLE GRID - Hapus motion.div layout agar tidak glitch */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20 relative z-10 items-stretch">
             {filteredVehicles.map((item, index) => (
-              <motion.div key={`${item.nama}-${index}`} layout className="group flex flex-col h-full">
+              <div 
+                key={`${item.nama}-${index}`} 
+                className="group flex flex-col h-full transform-gpu" 
+                style={{ isolation: 'isolate' }}
+              >
                 
-                {/* Image Card */}
-                <div className={`relative aspect-[16/10] rounded-[2.5rem] overflow-hidden bg-[#0d0d12] border mb-8 shadow-2xl transition-all duration-500 ${item.isHybrid ? 'border-blue-500/30 shadow-blue-500/5' : 'border-white/5'}`}>
+                {/* Image Card - Diubah agar border seragam untuk semua mobil */}
+                <div className="relative aspect-[16/10] rounded-[2.5rem] overflow-hidden bg-[#0d0d12] border border-white/5 mb-8 shadow-2xl transition-all duration-500 group-hover:border-cyan-500/30">
                   <Image src={item.image} fill alt={item.nama} priority={index < 3} className="object-cover transition-transform duration-1000 group-hover:scale-110" />
                   
+                  {/* Badge Solid (Anti-Glitch) */}
                   <div className="absolute top-5 left-5 z-20">
-                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/50 backdrop-blur-md border border-white/10 text-white font-bold text-[8px] uppercase tracking-widest shadow-xl">
+                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#15151a] border border-white/10 text-white font-bold text-[8px] uppercase tracking-widest shadow-xl">
                       <Car className="w-3 h-3 text-cyan-400" /> {item.type}
                     </div>
                   </div>
 
-                  <button onClick={() => setSelectedImage(item.image)} className="absolute bottom-5 right-5 p-4 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white lg:opacity-0 lg:group-hover:opacity-100 transition-all z-30">
+                  <button onClick={() => setSelectedImage(item.image)} className="absolute bottom-5 right-5 p-4 rounded-full bg-black/80 border border-white/20 text-white lg:opacity-0 lg:group-hover:opacity-100 transition-all z-30">
                     <Maximize2 className="w-4 h-4" />
                   </button>
                 </div>
@@ -159,20 +156,19 @@ export default function VehicleSection() {
                 {/* Content Details */}
                 <div className="px-2 flex-grow flex flex-col">
                   <div className="mb-2">
-                    <span className="text-[10px] font-black tracking-[0.4em] text-cyan-500 uppercase border-b-2 border-cyan-500/20 pb-1">
+                    <span className="text-[11px] font-black tracking-[0.4em] text-cyan-500 uppercase border-b-2 border-cyan-500/20 pb-1">
                       {item.brand}
                     </span>
                   </div>
 
-                  <div className="flex items-start mb-4 min-h-[3.5rem]">
-                    <h3 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter group-hover:text-cyan-400 leading-tight transition-colors duration-300">
+                  <div className="flex items-start mb-6 min-h-[3.5rem]">
+                    <h3 className="text-3xl md:text-4xl font-black italic uppercase tracking-tighter group-hover:text-cyan-400 leading-tight transition-colors duration-300">
                       {item.nama}
                     </h3>
                   </div>
 
-                  {/* Technical & Badges Wrapper */}
-                  <div className="space-y-5 mb-3">
-                    {/* 1. Technical Specs */}
+                  {/* Technical Specs - Full Grid & Center */}
+                  <div className="space-y-5 mb-8">
                     <div className="grid grid-cols-3 gap-2 w-full">
                       {[
                         { icon: Users, label: item.kursi, suffix: " Seats" },
@@ -181,69 +177,122 @@ export default function VehicleSection() {
                       ].map((spec, i) => (
                         <div 
                           key={i} 
-                          className="flex flex-col items-center justify-center gap-2 px-2 py-3 rounded-xl bg-white/5 border border-white/10 group-hover:border-cyan-500/30 transition-all text-center"
+                          className="flex flex-col items-center justify-center gap-2 py-4 rounded-2xl bg-white/[0.04] border border-white/5 group-hover:border-cyan-500/30 transition-all"
                         >
                           <spec.icon className="w-5 h-5 text-cyan-400" />
-                          <span className="text-[10px] font-black text-gray-200 uppercase tracking-tighter leading-none">
+                          <span className="text-[10px] font-black text-gray-300 uppercase tracking-widest leading-none">
                             {spec.label}{spec.suffix}
                           </span>
                         </div>
                       ))}
                     </div>
 
-                    {/* 2. Full-width Promo Badges */}
+                    {/* Promo Badges */}
                     {(item.isHybrid || item.includeDriver) && (
                       <div className="flex flex-col gap-2">
                         {item.isHybrid && (
-                          <div className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 animate-pulse">
-                            <Zap size={12} className="fill-blue-400" />
-                            <span className="text-[9px] font-black uppercase tracking-[0.2em] italic">Hybrid Technology</span>
+                          <div className="flex items-center justify-center gap-3 w-full py-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 animate-pulse">
+                            <Zap size={14} className="fill-blue-400" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] italic">Hybrid Tech</span>
                           </div>
                         )}
                         {item.includeDriver && (
-                          <div className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 animate-pulse">
-                            <CheckCircle2 size={12} />
-                            <span className="text-[9px] font-black uppercase tracking-[0.2em] italic">Driver Included</span>
+                          <div className="flex items-center justify-center gap-3 w-full py-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 animate-pulse">
+                            <CheckCircle2 size={14} />
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] italic">Driver Included</span>
                           </div>
                         )}
                       </div>
                     )}
                   </div>
 
-                  {/* Pricing & CTA - Pushed to Bottom */}
-                  <div className="mt-auto flex items-end justify-between pt-6 border-t border-white/10">
-                    <div>
-                      <span className="text-[9px] font-black text-gray-600 uppercase tracking-[0.3em] block mb-2">Rate Per Day</span>
-                      <p className="text-3xl font-black leading-none flex items-start">
-                        <span className="text-cyan-500 text-xs mt-1 mr-1 font-bold">IDR</span>
-                        {item.price.toLocaleString("id-ID")}
-                      </p>
-                    </div>
-                    
-                    <div className="flex gap-2">
-                      <a href={`https://wa.me/62895321866545?text=Halo Admin 1, booking ${item.nama}`} target="_blank" className="p-4 rounded-2xl bg-white text-black hover:bg-cyan-500 transition-all shadow-xl">
-                        <MessageCircle className="w-5 h-5" />
-                      </a>
-                      <a href={`https://wa.me/6285822593523?text=Halo Admin 2, booking ${item.nama}`} target="_blank" className="p-4 rounded-2xl bg-white/5 border border-white/10 text-white hover:bg-cyan-500 hover:text-black transition-all">
-                        <MessageCircle className="w-5 h-5" />
-                      </a>
+                  {/* Pricing & CTA - Neon Transparent Version */}
+                  <div className="mt-auto pt-8 border-t border-white/5">
+                    <div className="flex flex-col gap-6">
+                      
+                      {/* Harga Section */}
+                      <div className="w-full">
+                        <span className="text-[10px] font-black text-gray-600 uppercase tracking-[0.3em] block mb-1">
+                          Rate Per Day
+                        </span>
+                        <div className="flex items-baseline gap-1">
+                          <span className="text-cyan-500 text-sm font-black">IDR</span>
+                          <span className="text-4xl md:text-5xl font-black italic tracking-tighter">
+                            {item.price.toLocaleString("id-ID")}
+                          </span>
+                        </div>
+                      </div>
+                      
+                      {/* Tombol Admin - Glassmorphism & Neon Hover */}
+                      <div className="grid grid-cols-2 gap-4 w-full">
+                        {/* Admin 1 - Neon Cyan */}
+                        <a 
+                          href={`https://wa.me/62895321866545?text=Halo Admin 1, saya ingin booking ${item.nama}`} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="group relative flex items-center justify-center gap-3 py-4 rounded-2xl bg-white/[0.03] border border-white/10 text-white transition-all duration-300 hover:border-cyan-500/50 hover:bg-cyan-500/5 hover:shadow-[0_0_20px_rgba(6,182,212,0.2)] active:scale-95"
+                        >
+                          <MessageCircle className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                          <span className="text-[10px] font-black uppercase tracking-widest text-gray-300 group-hover:text-white transition-colors">Admin 1</span>
+                          
+                          {/* Neon Line Effect (Optional) */}
+                          <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity blur-md bg-cyan-500/10 -z-10" />
+                        </a>
+
+                        {/* Admin 2 - Neon Emerald */}
+                        <a 
+                          href={`https://wa.me/6285822593523?text=Halo Admin 2, saya ingin booking ${item.nama}`} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="group relative flex items-center justify-center gap-3 py-4 rounded-2xl bg-white/[0.03] border border-white/10 text-white transition-all duration-300 hover:border-emerald-500/50 hover:bg-emerald-500/5 hover:shadow-[0_0_20px_rgba(16,185,129,0.2)] active:scale-95"
+                        >
+                          <MessageCircle className="w-5 h-5 text-gray-400 group-hover:text-emerald-400 transition-colors" />
+                          <span className="text-[10px] font-black uppercase tracking-widest text-gray-300 group-hover:text-white transition-colors">Admin 2</span>
+                          
+                          {/* Neon Line Effect (Optional) */}
+                          <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity blur-md bg-emerald-500/10 -z-10" />
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FULLSCREEN IMAGE MODAL */}
+      {/* MODAL IMAGE - Optimized & Responsive for Mobile */}
       <AnimatePresence>
         {selectedImage && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[1000] bg-black/98 backdrop-blur-3xl flex items-center justify-center p-4" onClick={() => setSelectedImage(null)}>
-            <motion.div initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 0.9 }} className="relative w-full max-w-6xl aspect-video rounded-[2.5rem] overflow-hidden" onClick={(e) => e.stopPropagation()}>
-              <Image src={selectedImage} alt="Preview" fill unoptimized className="object-cover" />
-              <button onClick={() => setSelectedImage(null)} className="absolute top-8 right-8 bg-cyan-500 text-black p-5 rounded-2xl shadow-2xl">
-                <X className="w-6 h-6 stroke-[3px]" />
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            exit={{ opacity: 0 }} 
+            className="fixed inset-0 z-[1000] bg-black/95 flex items-center justify-center p-4" 
+            onClick={() => setSelectedImage(null)}
+          >
+            <motion.div 
+              initial={{ scale: 0.9 }} 
+              animate={{ scale: 1 }} 
+              exit={{ scale: 0.9 }} 
+              className="relative w-full max-w-6xl aspect-video rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)]" 
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image 
+                src={selectedImage} 
+                alt="Preview" 
+                fill 
+                unoptimized 
+                className="object-cover"
+              />
+              
+              {/* Tombol Close: Kecil di Mobile (p-3), Normal di PC (md:p-5) */}
+              <button 
+                onClick={() => setSelectedImage(null)} 
+                className="absolute top-4 right-4 md:top-8 md:right-8 bg-cyan-500 text-black p-3 md:p-5 rounded-xl md:rounded-2xl shadow-2xl active:scale-90 hover:bg-white transition-all z-[1010]"
+              >
+                <X className="w-5 h-5 md:w-6 md:h-6 stroke-[3px]" />
               </button>
             </motion.div>
           </motion.div>

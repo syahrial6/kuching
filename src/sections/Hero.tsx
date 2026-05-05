@@ -1,180 +1,218 @@
 "use client";
 
 import { motion as m } from "framer-motion";
-import { Shield, MapPin, Clock, Users } from "lucide-react";
-import { FaInstagram, FaTiktok } from "react-icons/fa";
+import { Shield, MapPin, Clock, Users, Star, ChevronRight, Globe, Car } from "lucide-react";
 import { Typewriter } from "react-simple-typewriter";
 
 export function Hero() {
   return (
     <section
       id="hero"
-      className="pt-40 pb-32 text-center relative z-10 max-w-6xl mx-auto px-6"
+      className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden bg-[#08080b]"
     >
-      {/* Badge */}
-      <m.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="inline-block px-4 py-1 mb-3 text-sm border border-white/20 rounded-full text-gray-300"
-      >
-        Travel & Rental Mobil Resmi · Sejak 2022
-      </m.div>
+      {/* Background Decorative Glows */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden">
+        <div className="absolute top-[-5%] left-[-10%] w-[70%] md:w-[40%] h-[30%] bg-cyan-500/10 blur-[80px] md:blur-[120px] rounded-full" />
+        <div className="absolute bottom-[5%] right-[-10%] w-[70%] md:w-[40%] h-[30%] bg-purple-500/10 blur-[80px] md:blur-[120px] rounded-full" />
+      </div>
 
-      {/* Title */}
-      <m.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight"
-      >
-        <span className="text-white">Perjalanan Aman, Nyaman, dan</span>{" "}
-        <span className="bg-gradient-to-r from-cyan-400 to-purple-400 text-transparent bg-clip-text">
-          Terpercaya
-        </span>
-      </m.h1>
-
-      {/* Social Icons (moved below title) */}
-      <m.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="flex items-center justify-center gap-4 mt-6"
-      >
-        {/* Instagram */}
-        <a
-          href="https://www.instagram.com/argroup.ptk/"
-          className="group p-2 rounded-full bg-white/10 border border-white/20 transition hover:bg-[#E1306C]/20"
-        >
-          <FaInstagram className="w-5 h-5 text-white group-hover:text-[#E1306C] transition" />
-        </a>
-
-        {/* TikTok */}
-        <a
-          href="#"
-          className="group p-2 rounded-full bg-white/10 border border-white/20 transition hover:bg-[#69C9D0]/20"
-        >
-          <FaTiktok className="w-5 h-5 text-white group-hover:text-[#69C9D0] transition" />
-        </a>
-      </m.div>
-
-      <m.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.3 }}
-        className="mt-24 grid md:grid-cols-2 gap-10"
-      >
-        {/* ======================================================
-         CARD TRAVEL
-      ====================================================== */}
-        <div className="group p-10 rounded-3xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-xl border border-white/10 hover:border-cyan-400/60 hover:bg-white/10 transition-all cursor-pointer relative overflow-hidden">
-          {/* Glow Effect */}
-          <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 transition duration-700 bg-[radial-gradient(circle_at_center,cyan_0%,transparent_70%)]"></div>
-
-          {/* Icon */}
-          <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-cyan-500/20 border border-cyan-400/30 mb-6 group-hover:bg-cyan-500/30 transition">
-            <MapPin className="w-8 h-8 text-cyan-400" />
-          </div>
-
-          {/* Title */}
-          <h3 className="text-4xl font-extrabold text-white drop-shadow-sm leading-tight">
-            <span className="block text-center">Travel</span>
-            <span className="block text-center">Pontianak → Kuching</span>
-          </h3>
-
-          {/* Typewriter text */}
-          <p className="mt-4 text-gray-300 text-lg leading-relaxed h-[70px]">
-            <Typewriter
-              words={[
-                "Perjalanan premium dengan layanan door-to-door.",
-                "Armada nyaman, aman, dan selalu bersih.",
-                "Driver profesional + izin resmi lengkap.",
-                "Nikmati travel paling nyaman lintas border!",
-              ]}
-              loop={0}
-              cursor
-              cursorStyle="▌"
-              typeSpeed={35}
-              deleteSpeed={20}
-              delaySpeed={1800}
-            />
-          </p>
-
-          <a
-            href="#travel"
-            className="mt-8 inline-block px-7 py-3.5 rounded-xl bg-cyan-500 text-black font-semibold hover:bg-cyan-400 transition shadow-lg shadow-cyan-500/20"
+      <div className="max-w-7xl mx-auto px-5 md:px-8 relative z-10">
+        
+        {/* Header Section */}
+        <div className="text-center max-w-4xl mx-auto mb-12 md:mb-20">
+          <m.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center gap-2 px-3 py-1 md:px-4 md:py-1.5 mb-6 md:mb-8 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
           >
-            Lihat Paket Travel
-          </a>
+            <Star size={12} className="text-cyan-400 fill-cyan-400" />
+            <span className="text-[9px] md:text-[11px] uppercase tracking-[0.15em] text-gray-300 font-bold">
+              Premium Service • Sejak 2022
+            </span>
+          </m.div>
+
+          <m.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-[2.6rem] sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter italic leading-[1.1] md:leading-[0.9] text-white"
+          >
+            PERJALANAN
+            <br />
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-transparent bg-clip-text">
+              TANPA BATAS.
+            </span>
+          </m.h1>
+
+          <m.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="mt-6 md:mt-8 text-gray-400 text-base md:text-xl max-w-2xl mx-auto leading-relaxed px-2 md:px-0"
+          >
+            Solusi transportasi lintas negara dan rental mobil Pontianak dengan standar kenyamanan bintang lima.
+          </m.p>
         </div>
 
-        {/* ======================================================
-         CARD RENTAL
-      ====================================================== */}
-        <div className="group p-10 rounded-3xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-xl border border-white/10 hover:border-purple-400/60 hover:bg-white/10 transition-all cursor-pointer relative overflow-hidden">
-          {/* Glow Effect */}
-          <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 transition duration-700 bg-[radial-gradient(circle_at_center,purple_0%,transparent_70%)]"></div>
-
-          {/* Icon */}
-          <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-purple-500/20 border border-purple-400/30 mb-6 group-hover:bg-purple-500/30 transition">
-            <Users className="w-8 h-8 text-purple-400" />
-          </div>
-
-          {/* Title */}
-          <h3 className="text-4xl font-extrabold text-white drop-shadow-sm leading-tight">
-            <span className="block text-center">Rental Mobil</span>
-            <span className="block text-center">Pontianak</span>
-          </h3>
-
-          {/* Typewriter text */}
-          <p className="mt-4 text-gray-300 text-lg leading-relaxed h-[70px]">
-            <Typewriter
-              words={[
-                "Pilihan armada lengkap — dari Avanza hingga Fortuner.",
-                "Tersedia lepas kunci atau include driver profesional.",
-                "Cocok untuk wisata, keperluan bisnis, atau harian.",
-                "Sewa mobil paling fleksibel dan terpercaya!",
-              ]}
-              loop={0}
-              cursor
-              cursorStyle="▌"
-              typeSpeed={35}
-              deleteSpeed={20}
-              delaySpeed={1800}
-            />
-          </p>
-
-          <a
-            href="/vehicles"
-            className="mt-8 inline-block px-7 py-3.5 rounded-xl border border-white/20 text-white hover:bg-white/10 transition backdrop-blur-xl shadow-lg shadow-purple-500/20"
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+          
+          {/* Card Travel */}
+          <m.div
+            whileHover={{ y: -5 }}
+            className="group relative p-8 md:p-12 rounded-[2.5rem] bg-white/[0.03] border border-white/10 hover:border-cyan-500/40 transition-all duration-500 overflow-hidden flex flex-col"
           >
-            Lihat Daftar Mobil
-          </a>
+            <Globe className="absolute -bottom-10 -right-10 text-cyan-500/5 w-64 h-64 -rotate-12" />
+            
+            <div className="relative z-10 flex flex-col h-full">
+              {/* Header Section yang Disatukan */}
+              <div className="flex mb-8">
+                <div className="inline-flex items-center gap-3 p-2 pr-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm group-hover:border-cyan-500/30 transition-colors">
+                  {/* Area Ikon */}
+                  <div className="w-10 h-10 rounded-xl bg-cyan-500/20 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+                    <MapPin className="text-cyan-400" size={20} />
+                  </div>
+                  {/* Teks Badge */}
+                  <div className="flex flex-col">
+                    <span className="text-[10px] text-cyan-400 font-black uppercase tracking-[0.15em] leading-none">
+                      Lintas Negara
+                    </span>
+                    <span className="text-[8px] text-gray-500 font-medium uppercase tracking-wider mt-1">
+                      Official Route
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* JUDUL: Diberi height konstan agar sejajar */}
+              <div className="min-h-[140px] md:min-h-[180px] flex flex-col justify-end mb-4">
+                <h2 className="text-3xl md:text-5xl font-bold text-white italic uppercase leading-[1.1]">
+                  Travel<br/>
+                  <span className="text-cyan-400">Pontianak — Kuching</span>
+                </h2>
+              </div>
+
+              <div className="flex-grow flex flex-col">
+                {/* TYPEWRITER: Diberi height tetap */}
+                <div className="h-10 mb-6">
+                   <p className="text-gray-400 text-base md:text-lg flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
+                    <Typewriter
+                      words={["Layanan Door-to-Door", "Antar Jemput Alamat", "Executive Class"]}
+                      loop={true} cursor cursorStyle="_" typeSpeed={50}
+                    />
+                  </p>
+                </div>
+
+                {/* TAGS */}
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {['3H2M', 'Include Driver', 'Include Bahan Bakar'].map((f) => (
+                      <span key={f} className="px-3 py-1.5 rounded-full bg-white/5 border border-white/5 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+                        {f}
+                      </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* FOOTER */}
+              <div className="pt-8 mt-auto border-t border-white/5 flex items-center justify-between">
+                <div className="flex flex-col">
+                    <span className="text-gray-500 text-[10px] uppercase tracking-tighter">Mulai Dari</span>
+                    <span className="text-white font-bold">Rp 5.000.000</span>
+                </div>
+                <button className="flex items-center gap-2 px-6 py-3 rounded-full bg-cyan-500 text-black font-bold text-xs uppercase tracking-wider hover:scale-105 transition-transform group/btn">
+                    Lihat Paket <ChevronRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+          </m.div>
+
+          {/* Card Rental */}
+          <m.div
+            whileHover={{ y: -5 }}
+            className="group relative p-8 md:p-12 rounded-[2.5rem] bg-white/[0.03] border border-white/10 hover:border-purple-500/40 transition-all duration-500 overflow-hidden flex flex-col"
+          >
+            <Car className="absolute -bottom-10 -right-10 text-purple-500/5 w-64 h-64 -rotate-12" />
+
+            <div className="relative z-10 flex flex-col h-full">
+              <div className="flex mb-8">
+                <div className="inline-flex items-center gap-3 p-2 pr-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm group-hover:border-purple-500/30 transition-colors">
+                  {/* Area Ikon dengan Glow */}
+                  <div className="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+                    <Users className="text-purple-400" size={20} />
+                  </div>
+                  
+                  {/* Label Detail */}
+                  <div className="flex flex-col">
+                    <span className="text-[10px] text-purple-400 font-black uppercase tracking-[0.15em] leading-none">
+                      Unit Premium
+                    </span>
+                    <span className="text-[8px] text-gray-500 font-medium uppercase tracking-wider mt-1">
+                      Ready 24/7 Service
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* JUDUL: Sama dengan sebelah agar simetris */}
+              <div className="min-h-[140px] md:min-h-[180px] flex flex-col justify-end mb-4">
+                <h2 className="text-3xl md:text-5xl font-bold text-white italic uppercase leading-[1.1]">
+                  Rental<br/>Mobil<br/>
+                  <span className="text-purple-400">Pontianak</span>
+                </h2>
+              </div>
+
+              <div className="flex-grow flex flex-col">
+                {/* TYPEWRITER: Tinggi harus sama */}
+                <div className="h-10 mb-6">
+                   <p className="text-gray-400 text-base md:text-lg flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse" />
+                    <Typewriter
+                      words={["Lepas Kunci / Driver", "Harian & Bulanan", "Armada Terbaru"]}
+                      loop={true} cursor cursorStyle="_" typeSpeed={50}
+                    />
+                  </p>
+                </div>
+
+                {/* TAGS */}
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {['24/7', 'Terawat', 'Lengkap'].map((f) => (
+                      <span key={f} className="px-3 py-1.5 rounded-full bg-white/5 border border-white/5 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+                        {f}
+                      </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* FOOTER: Sama dengan sebelah */}
+              <div className="pt-8 mt-auto border-t border-white/5 flex items-center justify-between">
+                <div className="flex flex-col">
+                    <span className="text-gray-500 text-[10px] uppercase tracking-tighter">Mulai Dari</span>
+                    <span className="text-white font-bold">Rp 300.000<span className="text-purple-400 text-xs font-normal">/hari</span></span>
+                </div>
+                <button className="flex items-center gap-2 px-6 py-3 rounded-full bg-purple-500 text-black font-bold text-xs uppercase tracking-wider hover:scale-105 transition-transform group/btn">
+                    Cek Unit <ChevronRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+          </m.div>
         </div>
-      </m.div>
 
-      {/* Info Boxes */}
-      <m.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2 }}
-        className="grid grid-cols-2 sm:grid-cols-4 gap-5 mt-16 text-gray-300"
-      >
-        {[
-          { icon: Shield, text: "Aman & Resmi" },
-          { icon: Clock, text: "Tepat Waktu" },
-          { icon: Users, text: "Driver Profesional" },
-          { icon: MapPin, text: "Door to Door" },
-        ].map((item, i) => (
-          <div
-            key={i}
-            className="p-4 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10"
-          >
-            <item.icon className="mx-auto w-6 h-6 mb-2 text-cyan-400" />
-            <p className="text-sm">{item.text}</p>
-          </div>
-        ))}
-      </m.div>
+        {/* Feature Highlights */}
+        <div className="mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          {[
+            { icon: Shield, label: "Izin Resmi" },
+            { icon: Star, label: "Layanan VIP" },
+            { icon: Clock, label: "On Time" },
+            { icon: Users, label: "Driver Profesional" },
+          ].map((item, idx) => (
+            <div key={idx} className="flex items-center gap-3 p-4 md:p-5 rounded-2xl bg-white/[0.02] border border-white/5">
+              <item.icon size={16} className="text-cyan-400 shrink-0" />
+              <span className="text-[10px] md:text-xs uppercase tracking-widest font-bold text-gray-400">{item.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

@@ -69,36 +69,36 @@ export default function Navbar() {
     >
       <div className="px-8 flex justify-between items-center h-14">
         {/* Logo Section */}
-<div
-  className="flex items-center gap-3 cursor-pointer group"
-  onClick={() => scrollToSection("hero")}
->
-  {/* Logo Icon dengan efek Glassmorphism */}
-  <div className="relative overflow-hidden rounded-full p-1.5 bg-white/5 group-hover:bg-white/10 transition-all duration-300 border border-white/5">
-    <Image 
-      src="/images/logo.png" 
-      alt="Logo" 
-      width={32} 
-      height={32} 
-      className="object-contain"
-    />
-  </div>
+        <div
+          className="flex items-center gap-3 cursor-pointer group"
+          onClick={() => scrollToSection("hero")}
+        >
+          {/* Logo Icon dengan efek Glassmorphism */}
+          <div className="relative overflow-hidden rounded-full p-1.5 bg-white/5 group-hover:bg-white/10 transition-all duration-300 border border-white/5">
+            <Image 
+              src="/images/logo.png" 
+              alt="Logo" 
+              width={32} 
+              height={32} 
+              className="object-contain"
+            />
+          </div>
 
-  {/* Text Logo */}
-  <div className="hidden sm:flex flex-col justify-center">
-    <h1 className="text-[15px] font-bold text-cyan-400/80 tracking-tight leading-none">
-      Sigma Borneo
-    </h1>
-    <div className="flex items-center gap-1 mt-0.5">
-      <span className="text-[9px] text-gray-500 font-medium uppercase tracking-wider">
-        by
-      </span>
-      <span className="text-[9px] text-white font-bold uppercase tracking-widest">
-        Artha Royal Group
-      </span>
-    </div>
-  </div>
-</div>
+          {/* Text Logo */}
+          <div className="hidden sm:flex flex-col justify-center">
+            <h1 className="text-[15px] font-black text-white tracking-tight leading-none uppercase italic">
+              Sigma <span className="text-cyan-500">Borneo</span>
+            </h1>
+            <div className="flex items-center gap-1 mt-0.5">
+              <span className="text-[9px] text-gray-500 font-medium uppercase tracking-wider">
+                by
+              </span>
+              <span className="text-[9px] text-white font-bold uppercase tracking-widest">
+                Artha Royal Group
+              </span>
+            </div>
+          </div>
+        </div>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-1 bg-white/5 p-1 rounded-[2rem] border border-white/5">
