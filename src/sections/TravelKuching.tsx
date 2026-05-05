@@ -2,7 +2,7 @@
 
 import { motion as m, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { X, Calendar, UserCheck, Fuel, Maximize2, MessageCircle, ArrowUpRight } from "lucide-react";
+import { X, Calendar, UserCheck, Fuel, Maximize2, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import { TiltCard } from "../components/TiltCard";
 
@@ -171,26 +171,35 @@ export const TravelKuching = () => {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="mt-auto flex flex-col gap-2">
+                    <div className="mt-auto flex flex-col gap-3">
+                      {/* Admin 1 - Cyan Neon */}
                       <m.a
-                        whileHover={{ scale: 1.02 }}
+                        whileHover={{ scale: 1.02, y: -2 }}
                         whileTap={{ scale: 0.98 }}
                         href={`https://wa.me/62895321866545?text=${encodeURIComponent(`Halo, saya mau pesan Paket Travel ${kend.subtitle}.`)}`}
                         target="_blank"
-                        className="flex items-center justify-between px-5 py-3 rounded-xl bg-cyan-500 text-black font-bold text-xs transition-all hover:bg-cyan-400"
+                        className="group relative flex items-center justify-between px-6 py-3.5 rounded-xl border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 font-bold text-[11px] tracking-[0.15em] transition-all duration-300 hover:border-cyan-400 hover:text-white hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]"
                       >
-                        HUBUNGI ADMIN 1
-                        <ArrowUpRight size={14} />
+                        {/* Inner Glow */}
+                        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        
+                        <span className="relative z-10 uppercase">Hubungi Admin 1</span>
+                        <ArrowUpRight size={16} className="relative z-10 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </m.a>
+
+                      {/* Admin 2 - Emerald Neon */}
                       <m.a
-                        whileHover={{ scale: 1.02 }}
+                        whileHover={{ scale: 1.02, y: -2 }}
                         whileTap={{ scale: 0.98 }}
                         href={`https://wa.me/6285822593523?text=${encodeURIComponent(`Halo, saya mau pesan Paket Travel ${kend.subtitle}.`)}`}
                         target="_blank"
-                        className="flex items-center justify-between px-5 py-3 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-xs transition-all hover:bg-white/10"
+                        className="group relative flex items-center justify-between px-6 py-3.5 rounded-xl border border-emerald-500/30 bg-emerald-500/5 text-emerald-400 font-bold text-[11px] tracking-[0.15em] transition-all duration-300 hover:border-emerald-400 hover:text-white hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]"
                       >
-                        HUBUNGI ADMIN 2
-                        <MessageCircle size={14} className="text-gray-400" />
+                        {/* Inner Glow */}
+                        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500/0 via-emerald-500/10 to-emerald-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                        <span className="relative z-10 uppercase">Hubungi Admin 2</span>
+                        <ArrowUpRight size={16} className="relative z-10 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </m.a>
                     </div>
                   </div>

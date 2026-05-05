@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion as m } from "framer-motion";
 import { Shield, MapPin, Clock, Users, Star, ChevronRight, Globe, Car } from "lucide-react";
 import { Typewriter } from "react-simple-typewriter";
@@ -190,9 +191,13 @@ export function Hero() {
                     <span className="text-gray-500 text-[10px] uppercase tracking-tighter">Mulai Dari</span>
                     <span className="text-white font-bold">Rp 300.000<span className="text-purple-400 text-xs font-normal">/hari</span></span>
                 </div>
-                <button className="flex items-center gap-2 px-6 py-3 rounded-full bg-purple-500 text-black font-bold text-xs uppercase tracking-wider hover:scale-105 transition-transform group/btn">
-                    Cek Unit <ChevronRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
-                </button>
+                <Link 
+                  href="/vehicles" 
+                  className="flex items-center gap-2 px-6 py-3 rounded-full bg-purple-500 text-black font-bold text-xs uppercase tracking-wider hover:scale-105 transition-transform group/btn"
+                >
+                  Cek Unit 
+                  <ChevronRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
+                </Link>
               </div>
             </div>
           </m.div>
