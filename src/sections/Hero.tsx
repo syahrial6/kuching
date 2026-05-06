@@ -10,7 +10,6 @@ export function Hero() {
     <section
       id="hero"
       className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden bg-[#08080b]"
-      /* Menambahkan akselerasi hardware pada level section */
       style={{ transform: 'translateZ(0)' }}
     >
       {/* Background Decorative Glows */}
@@ -63,11 +62,6 @@ export function Hero() {
           {/* Card Travel */}
           <m.div
             whileHover={{ y: -5 }}
-            /* 
-               PERBAIKAN UTAMA: 
-               1. Menghapus backdrop-blur dari card utama karena ini penyebab bug di Chrome Android.
-               2. Menggunakan bg-white/[0.04] agar tetap terlihat semi-transparan.
-            */
             className="group relative p-8 md:p-12 rounded-[2.5rem] bg-[#0d0d12] border border-white/10 hover:border-cyan-500/40 transition-all duration-500 overflow-hidden flex flex-col"
             style={{ backfaceVisibility: 'hidden', transform: 'translateZ(0)' }}
           >
@@ -75,7 +69,6 @@ export function Hero() {
             
             <div className="relative z-10 flex flex-col h-full">
               <div className="flex mb-8">
-                {/* Badge tetap bisa pakai blur karena areanya kecil */}
                 <div className="inline-flex items-center gap-3 p-2 pr-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm group-hover:border-cyan-500/30 transition-colors">
                   <div className="w-10 h-10 rounded-xl bg-cyan-500/20 flex items-center justify-center">
                     <MapPin className="text-cyan-400" size={20} />
@@ -119,9 +112,9 @@ export function Hero() {
                     <span className="text-gray-500 text-[10px] uppercase tracking-tighter">Mulai Dari</span>
                     <span className="text-white font-bold">Rp 5.000.000</span>
                 </div>
-                <button className="flex items-center gap-2 px-6 py-3 rounded-full bg-cyan-500 text-black font-bold text-xs uppercase tracking-wider hover:scale-105 transition-transform group/btn">
+                <Link href="#travel" className="flex items-center gap-2 px-6 py-3 rounded-full bg-cyan-500 text-black font-bold text-xs uppercase tracking-wider hover:scale-105 transition-transform group/btn">
                     Lihat Paket <ChevronRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
-                </button>
+                </Link>
               </div>
             </div>
           </m.div>
@@ -129,7 +122,6 @@ export function Hero() {
           {/* Card Rental */}
           <m.div
             whileHover={{ y: -5 }}
-            /* Perbaikan yang sama diterapkan di sini */
             className="group relative p-8 md:p-12 rounded-[2.5rem] bg-[#0d0d12] border border-white/10 hover:border-purple-500/40 transition-all duration-500 overflow-hidden flex flex-col"
             style={{ backfaceVisibility: 'hidden', transform: 'translateZ(0)' }}
           >

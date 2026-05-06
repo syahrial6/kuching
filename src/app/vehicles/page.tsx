@@ -112,7 +112,6 @@ export default function VehicleSection() {
                 </Listbox>
               ))}
 
-              {/* TOMBOL RESET - Muncul hanya saat filter aktif */}
               <AnimatePresence>
                 {isFiltered && (
                   <motion.button
@@ -287,7 +286,6 @@ export default function VehicleSection() {
                 className="object-cover"
               />
               
-              {/* Tombol Close: Kecil di Mobile (p-3), Normal di PC (md:p-5) */}
               <button 
                 onClick={() => setSelectedImage(null)} 
                 className="absolute top-4 right-4 md:top-8 md:right-8 bg-cyan-500 text-black p-3 md:p-5 rounded-xl md:rounded-2xl shadow-2xl active:scale-90 hover:bg-white transition-all z-[1010]"
