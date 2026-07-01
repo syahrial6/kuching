@@ -4,6 +4,7 @@ import Navbar from "@/layouts/Navbar";
 import { Hero } from "@/sections/Hero";
 import { About } from "@/sections/About";
 import { TravelKuching } from "@/sections/TravelKuching";
+import { WisataPontianak } from "@/sections/WisataPontianak";
 import { Footer } from "@/layouts/Footer";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 
@@ -20,6 +21,8 @@ export default function Home() {
       <About />
 
       <TravelKuching />
+
+      <WisataPontianak />
 
       <Footer />
 
