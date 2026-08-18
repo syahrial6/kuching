@@ -62,6 +62,7 @@ export const FloatingWhatsApp = () => {
               variants={itemVariants}
               href={`https://wa.me/62895321866545`}
               target="_blank"
+              rel="noopener noreferrer"
               className="group flex items-center gap-4 pl-5 pr-4 py-3 rounded-2xl bg-[#0d0d12]/80 backdrop-blur-2xl border border-white/10 text-white shadow-xl hover:border-emerald-500/50 transition-all duration-300"
             >
                <div className="flex flex-col items-end">
@@ -76,6 +77,7 @@ export const FloatingWhatsApp = () => {
               variants={itemVariants}
               href={`https://wa.me/6285822593523`}
               target="_blank"
+              rel="noopener noreferrer"
               className="group flex items-center gap-4 pl-5 pr-4 py-3 rounded-2xl bg-[#0d0d12]/80 backdrop-blur-2xl border border-white/10 text-white shadow-xl hover:border-cyan-500/50 transition-all duration-300"
             >
                <div className="flex flex-col items-end">

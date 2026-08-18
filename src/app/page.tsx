@@ -1,12 +1,10 @@
-"use client";
-
 import Navbar from "@/layouts/Navbar";
 import { Hero } from "@/sections/Hero";
 import { About } from "@/sections/About";
 import { TravelKuching } from "@/sections/TravelKuching";
 import { WisataPontianak } from "@/sections/WisataPontianak";
 import { Footer } from "@/layouts/Footer";
-import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { FloatingWhatsAppWrapper } from "@/components/FloatingWhatsAppWrapper";
 
 export default function Home() {
   return (
@@ -16,17 +14,19 @@ export default function Home() {
     >
       <Navbar />
 
-      <Hero />
+      <main id="main-content">
+        <Hero />
 
-      <About />
+        <About />
 
-      <TravelKuching />
+        <TravelKuching />
 
-      <WisataPontianak />
+        <WisataPontianak />
 
-      <Footer />
+        <Footer />
+      </main>
 
-      <FloatingWhatsApp />
+      <FloatingWhatsAppWrapper />
     </div>
   );
 }

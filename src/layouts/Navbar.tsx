@@ -75,20 +75,21 @@ export default function Navbar() {
         >
           {/* Logo Icon dengan efek Glassmorphism */}
           <div className="relative overflow-hidden rounded-full p-1.5 bg-white/5 group-hover:bg-white/10 transition-all duration-300 border border-white/5">
-            <Image 
-              src="/images/logo.png" 
-              alt="Logo" 
-              width={32} 
-              height={32} 
+            <Image
+              src="/images/logo.webp"
+              alt="Sigma Borneo Logo"
+              width={32}
+              height={32}
               className="object-contain"
+              priority
             />
           </div>
 
           {/* Text Logo */}
           <div className="hidden sm:flex flex-col justify-center">
-            <h1 className="text-[15px] font-black text-white tracking-tight leading-none uppercase italic">
+            <span className="text-[15px] font-black text-white tracking-tight leading-none uppercase italic">
               Sigma <span className="text-cyan-500">Borneo</span>
-            </h1>
+            </span>
             <div className="flex items-center gap-1 mt-0.5">
               <span className="text-[9px] text-gray-500 font-medium uppercase tracking-wider">
                 by
@@ -135,7 +136,7 @@ export default function Navbar() {
                   />
                 )}
               </button>
-            )
+            ),
           )}
         </div>
 
@@ -188,7 +189,7 @@ export default function Navbar() {
                       />
                     )}
                   </button>
-                )
+                ),
               )}
             </div>
           </motion.div>

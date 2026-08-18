@@ -45,12 +45,15 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-[2.6rem] sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter italic leading-[1.1] md:leading-[0.9] text-white"
+            className="text-[2.2rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter italic leading-[1.1] md:leading-[0.9] text-white"
           >
-            PERJALANAN
+            TRAVEL
             <br />
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-transparent bg-clip-text">
-              TANPA BATAS.
+            <span className="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-transparent bg-clip-text">
+              PONTIANAK
+            </span>
+            <span className="block bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
+              KUCHING
             </span>
           </m.h1>
 

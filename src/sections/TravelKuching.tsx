@@ -2,7 +2,14 @@
 
 import { motion as m, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { X, Calendar, UserCheck, Fuel, Maximize2, ArrowUpRight } from "lucide-react";
+import {
+  X,
+  Calendar,
+  UserCheck,
+  Fuel,
+  Maximize2,
+  ArrowUpRight,
+} from "lucide-react";
 import { useState } from "react";
 import { TiltCard } from "../components/TiltCard";
 
@@ -61,7 +68,10 @@ export const TravelKuching = () => {
   ];
 
   return (
-    <section id="travel" className="py-24 md:py-32 relative overflow-hidden bg-[#08080b]">
+    <section
+      id="travel"
+      className="py-24 md:py-32 relative overflow-hidden bg-[#08080b]"
+    >
       {/* Background Glows yang konsisten dengan About.tsx */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden opacity-30">
         <div className="absolute top-[10%] left-[-10%] w-[40%] h-[40%] bg-cyan-500/10 blur-[120px] rounded-full" />
@@ -69,7 +79,6 @@ export const TravelKuching = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        
         {/* Header Section - Mengikuti gaya About.tsx */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 md:mb-24">
           <div className="max-w-2xl">
@@ -80,9 +89,11 @@ export const TravelKuching = () => {
               className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-              <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-bold">Trip Packages</span>
+              <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-bold">
+                Trip Packages
+              </span>
             </m.div>
-            
+
             <m.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -90,7 +101,9 @@ export const TravelKuching = () => {
               className="text-4xl md:text-6xl font-black text-white italic tracking-tighter uppercase leading-tight"
             >
               PILIH PAKET <br />
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">TRAVEL ANDA.</span>
+              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">
+                TRAVEL ANDA.
+              </span>
             </m.h2>
           </div>
 
@@ -101,7 +114,8 @@ export const TravelKuching = () => {
             transition={{ delay: 0.2 }}
             className="text-gray-400 text-base md:text-lg max-w-sm leading-relaxed text-left md:text-right"
           >
-            Perjalanan Premium lintas negara Pontianak — Kuching dengan harga transparan dan layanan berkelas.
+            Perjalanan Premium lintas negara Pontianak — Kuching dengan harga
+            transparan dan layanan berkelas.
           </m.p>
         </div>
 
@@ -117,10 +131,9 @@ export const TravelKuching = () => {
             >
               <TiltCard className="h-full group">
                 <div className="relative h-full flex flex-col rounded-[2rem] bg-white/[0.03] border border-white/10 backdrop-blur-sm overflow-hidden transition-all duration-500 group-hover:border-white/20">
-                  
                   {/* Image Container */}
                   <div className="relative h-48 overflow-hidden">
-                    <div 
+                    <div
                       className="absolute inset-0 z-20 cursor-zoom-in flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-all duration-500"
                       onClick={() => setSelectedImage(kend.image)}
                     >
@@ -130,9 +143,12 @@ export const TravelKuching = () => {
                     </div>
                     <Image
                       src={kend.image}
-                      alt={kend.subtitle}
+                      alt={`${kend.brand} ${kend.subtitle} - Travel Pontianak Kuching`}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading={i === 0 ? "eager" : "lazy"}
+                      priority={i === 0}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#08080b] to-transparent opacity-60" />
                   </div>
@@ -140,7 +156,9 @@ export const TravelKuching = () => {
                   {/* Content */}
                   <div className="p-6 flex flex-col flex-1 relative">
                     {/* Hover Glow Effect */}
-                    <div className={`absolute -inset-1 bg-gradient-to-br ${kend.color} opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500 -z-10`} />
+                    <div
+                      className={`absolute -inset-1 bg-gradient-to-br ${kend.color} opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500 -z-10`}
+                    />
 
                     <div className="mb-4">
                       <span className="text-[10px] font-black uppercase tracking-[0.2em] text-cyan-400">
@@ -152,7 +170,9 @@ export const TravelKuching = () => {
                     </div>
 
                     <div className="mb-6">
-                      <div className="text-xs text-gray-500 uppercase font-bold tracking-widest mb-1">Start From</div>
+                      <div className="text-xs text-gray-500 uppercase font-bold tracking-widest mb-1">
+                        Start From
+                      </div>
                       <p className="text-2xl font-black text-white">
                         Rp {kend.price.toLocaleString("id-ID")}
                       </p>
@@ -161,7 +181,10 @@ export const TravelKuching = () => {
                     {/* Specs */}
                     <div className="space-y-3 mb-8">
                       {kend.specs.map((spec, idx) => (
-                        <div key={idx} className="flex items-center gap-3 text-xs text-gray-400">
+                        <div
+                          key={idx}
+                          className="flex items-center gap-3 text-xs text-gray-400"
+                        >
                           <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 group-hover:border-cyan-500/30 transition-colors">
                             <spec.icon className="w-4 h-4 text-cyan-400" />
                           </div>
@@ -178,13 +201,19 @@ export const TravelKuching = () => {
                         whileTap={{ scale: 0.98 }}
                         href={`https://wa.me/62895321866545?text=${encodeURIComponent(`Halo, saya mau pesan Paket Travel ${kend.subtitle}.`)}`}
                         target="_blank"
+                        rel="noopener noreferrer"
                         className="group relative flex items-center justify-between px-6 py-3.5 rounded-xl border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 font-bold text-[11px] tracking-[0.15em] transition-all duration-300 hover:border-cyan-400 hover:text-white hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]"
                       >
                         {/* Inner Glow */}
                         <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        
-                        <span className="relative z-10 uppercase">Hubungi Admin 1</span>
-                        <ArrowUpRight size={16} className="relative z-10 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+
+                        <span className="relative z-10 uppercase">
+                          Hubungi Admin 1
+                        </span>
+                        <ArrowUpRight
+                          size={16}
+                          className="relative z-10 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        />
                       </m.a>
 
                       {/* Admin 2 - Emerald Neon */}
@@ -193,13 +222,19 @@ export const TravelKuching = () => {
                         whileTap={{ scale: 0.98 }}
                         href={`https://wa.me/6285822593523?text=${encodeURIComponent(`Halo, saya mau pesan Paket Travel ${kend.subtitle}.`)}`}
                         target="_blank"
+                        rel="noopener noreferrer"
                         className="group relative flex items-center justify-between px-6 py-3.5 rounded-xl border border-emerald-500/30 bg-emerald-500/5 text-emerald-400 font-bold text-[11px] tracking-[0.15em] transition-all duration-300 hover:border-emerald-400 hover:text-white hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]"
                       >
                         {/* Inner Glow */}
                         <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500/0 via-emerald-500/10 to-emerald-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                        <span className="relative z-10 uppercase">Hubungi Admin 2</span>
-                        <ArrowUpRight size={16} className="relative z-10 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        <span className="relative z-10 uppercase">
+                          Hubungi Admin 2
+                        </span>
+                        <ArrowUpRight
+                          size={16}
+                          className="relative z-10 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        />
                       </m.a>
                     </div>
                   </div>

@@ -13,10 +13,7 @@ import { FaWhatsapp, FaInstagram, FaTiktok } from "react-icons/fa";
 
 export function Footer() {
   const scrollToSection = (id: string) => {
-    if (id === "gallery") {
-      window.location.href = "/gallery";
-      return;
-    }
+    if (id === "gallery") return;
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -43,10 +40,11 @@ export function Footer() {
               {/* Logo Image */}
               <div className="relative w-16 h-16 shrink-0 overflow-hidden rounded-xl bg-white/5 p-2 border border-white/10">
                 <Image
-                  src="/images/logo.png"
+                  src="/images/logo.webp"
                   fill
                   alt="Sigma Borneo Logo"
                   className="w-full h-full object-contain"
+                  priority
                 />
               </div>
 
@@ -85,9 +83,10 @@ export function Footer() {
             </h4>
             <ul className="grid grid-cols-2 lg:grid-cols-1 gap-y-4 gap-x-8">
               {navigation.map((item) => (
-                <li
+                <li role="button" tabIndex={0}
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
+                  onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") scrollToSection(item.id); }}
                   className="group flex items-center gap-3 text-gray-400 cursor-pointer hover:text-white transition-all duration-300 text-sm"
                 >
                   <div className="w-1.5 h-1.5 rounded-full bg-cyan-500/20 group-hover:bg-cyan-400 transition-all" />
@@ -156,7 +155,10 @@ export function Footer() {
                   <FaInstagram size={18} />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.tiktok.com/@argroup.ptk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TikTok"
                   className="flex-1 py-3 rounded-xl bg-white/5 border border-white/10 flex justify-center text-gray-400 hover:text-white transition-colors"
                 >
                   <FaTiktok size={18} />
