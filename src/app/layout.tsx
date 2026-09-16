@@ -85,7 +85,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* Google Tag (GA4 + Ads digabung) */}
+        {/* Google Tag (GA4 + Google Ads lama + Google Ads baru digabung) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-RNH2ESWQWZ"
           strategy="afterInteractive"
@@ -99,10 +99,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
             gtag('config', 'G-RNH2ESWQWZ');
             gtag('config', 'AW-17755416559');
+            gtag('config', 'AW-18455648054');
           `}
         </Script>
 
-        {/* Structured Data - LocalBusiness (Car Rental & Travel) */}
+        {/* Structured Data - LocalBusiness */}
         <Script
           id="schema-localbusiness"
           type="application/ld+json"
