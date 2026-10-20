@@ -91,7 +91,7 @@ export default function Navbar() {
               Sigma <span className="text-cyan-500">Borneo</span>
             </span>
             <div className="flex items-center gap-1 mt-0.5">
-              <span className="text-[9px] text-gray-500 font-medium uppercase tracking-wider">
+              <span className="text-[9px] text-gray-400 font-medium uppercase tracking-wider">
                 by
               </span>
               <span className="text-[9px] text-white font-bold uppercase tracking-widest">
@@ -142,10 +142,18 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button
+          type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-white"
+          aria-label={isOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+          className="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
         >
-          {isOpen ? <X size={20} /> : <Menu size={20} />}
+          {isOpen ? (
+            <X size={20} aria-hidden="true" />
+          ) : (
+            <Menu size={20} aria-hidden="true" />
+          )}
         </button>
       </div>
 
@@ -153,6 +161,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, scale: 0.95, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -20 }}

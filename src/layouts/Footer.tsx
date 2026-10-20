@@ -1,10 +1,7 @@
 "use client";
-import Image from "next/image"; // Pastikan menggunakan komponen Image jika di Next.js
+import Image from "next/image";
+import Link from "next/link";
 import {
-  Home,
-  Info,
-  Map,
-  Image as ImageIcon,
   Mail,
   ArrowRight,
   ShieldCheck,
@@ -18,10 +15,10 @@ export function Footer() {
   };
 
   const navigation = [
-    { label: "Beranda", id: "hero", icon: Home },
-    { label: "Tentang Kami", id: "about", icon: Info },
-    { label: "Travel Kuching", id: "travel", icon: Map },
-    { label: "Gallery", id: "gallery", icon: ImageIcon },
+    { label: "Beranda", id: "hero" },
+    { label: "Tentang Kami", id: "about" },
+    { label: "Travel Kuching", id: "travel" },
+    { label: "Gallery", id: "gallery" },
   ];
 
   return (
@@ -30,7 +27,10 @@ export function Footer() {
       className="relative overflow-hidden bg-[#08080b] pt-24 pb-12 border-t border-white/5"
     >
       {/* Background Decor */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
+      <div
+        aria-hidden="true"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent"
+      />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-12 gap-16 lg:gap-12">
@@ -78,29 +78,52 @@ export function Footer() {
 
           {/* Navigation */}
           <div className="lg:col-span-4 xl:col-span-3">
-            <h4 className="text-white font-bold text-xs uppercase tracking-[0.2em] mb-8">
+            <h3 className="text-white font-bold text-xs uppercase tracking-[0.2em] mb-8">
               Eksplorasi
-            </h4>
-            <ul className="grid grid-cols-2 lg:grid-cols-1 gap-y-4 gap-x-8">
-              {navigation.map((item) => (
-                <li role="button" tabIndex={0}
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") scrollToSection(item.id); }}
-                  className="group flex items-center gap-3 text-gray-400 cursor-pointer hover:text-white transition-all duration-300 text-sm"
-                >
-                  <div className="w-1.5 h-1.5 rounded-full bg-cyan-500/20 group-hover:bg-cyan-400 transition-all" />
-                  {item.label}
-                </li>
-              ))}
+            </h3>
+            <ul className="grid grid-cols-2 lg:grid-cols-1 gap-y-4 gap-x-8 list-none">
+              {navigation.map((item) => {
+                // "Gallery" adalah route terpisah (/gallery) — render sebagai Link
+                if (item.id === "gallery") {
+                  return (
+                    <li key={item.id}>
+                      <Link
+                        href="/gallery"
+                        className="group flex w-full items-center gap-3 text-gray-300 cursor-pointer hover:text-white transition-all duration-300 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-md px-1"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="w-1.5 h-1.5 rounded-full bg-cyan-500/40 group-hover:bg-cyan-400 transition-all"
+                        />
+                        {item.label}
+                      </Link>
+                    </li>
+                  );
+                }
+                return (
+                  <li key={item.id}>
+                    <button
+                      type="button"
+                      onClick={() => scrollToSection(item.id)}
+                      className="group flex w-full items-center gap-3 text-gray-300 cursor-pointer hover:text-white transition-all duration-300 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-md px-1"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="w-1.5 h-1.5 rounded-full bg-cyan-500/40 group-hover:bg-cyan-400 transition-all"
+                      />
+                      {item.label}
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
           {/* Contact Section */}
           <div className="lg:col-span-8 xl:col-span-4">
-            <h4 className="text-white font-bold text-xs uppercase tracking-[0.2em] mb-8">
+            <h3 className="text-white font-bold text-xs uppercase tracking-[0.2em] mb-8">
               Layanan Pelanggan
-            </h4>
+            </h3>
 
             <div className="grid sm:grid-cols-2 xl:grid-cols-1 gap-3">
               {/* WhatsApp Cards */}
@@ -118,6 +141,8 @@ export function Footer() {
                   key={idx}
                   href={admin.link}
                   target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${admin.label} via WhatsApp (buka di tab baru)`}
                   className="group flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/[0.08] hover:border-cyan-500/30 transition-all duration-300"
                 >
                   <div className="flex items-center gap-4">
@@ -128,7 +153,7 @@ export function Footer() {
                       <p className="text-white font-bold text-[11px] uppercase tracking-wide">
                         {admin.label}
                       </p>
-                      <p className="text-gray-500 text-[10px] mt-0.5">
+                      <p className="text-gray-400 text-[10px] mt-0.5">
                         Tersedia • Klik untuk chat
                       </p>
                     </div>
@@ -144,24 +169,28 @@ export function Footer() {
               <div className="flex gap-2">
                 <a
                   href="mailto:argroup.ptk@gmail.com"
-                  className="flex-1 py-3 rounded-xl bg-white/5 border border-white/10 flex justify-center text-gray-400 hover:text-red-400 transition-colors"
+                  aria-label="Kirim email ke Sigma Borneo"
+                  className="flex-1 py-3 rounded-xl bg-white/5 border border-white/10 flex justify-center text-gray-400 hover:text-red-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400"
                 >
-                  <Mail size={18} />
+                  <Mail size={18} aria-hidden="true" />
                 </a>
                 <a
                   href="https://instagram.com/argroup.ptk"
-                  className="flex-1 py-3 rounded-xl bg-white/5 border border-white/10 flex justify-center text-gray-400 hover:text-pink-400 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram Sigma Borneo (buka di tab baru)"
+                  className="flex-1 py-3 rounded-xl bg-white/5 border border-white/10 flex justify-center text-gray-400 hover:text-pink-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-400"
                 >
-                  <FaInstagram size={18} />
+                  <FaInstagram size={18} aria-hidden="true" />
                 </a>
                 <a
                   href="https://www.tiktok.com/@argroup.ptk"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="TikTok"
-                  className="flex-1 py-3 rounded-xl bg-white/5 border border-white/10 flex justify-center text-gray-400 hover:text-white transition-colors"
+                  aria-label="TikTok Sigma Borneo (buka di tab baru)"
+                  className="flex-1 py-3 rounded-xl bg-white/5 border border-white/10 flex justify-center text-gray-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                 >
-                  <FaTiktok size={18} />
+                  <FaTiktok size={18} aria-hidden="true" />
                 </a>
               </div>
             </div>
@@ -170,7 +199,7 @@ export function Footer() {
 
         {/* Footer Bottom */}
         <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-gray-600 text-[10px] tracking-[0.2em] uppercase font-medium">
+          <p className="text-gray-400 text-[10px] tracking-[0.2em] uppercase font-medium">
             © {new Date().getFullYear()} Sigma Borneo. All rights reserved.
           </p>
 
@@ -181,7 +210,7 @@ export function Footer() {
             className="group flex items-center gap-1 px-4 py-2 rounded-full bg-white/[0.02] border border-white/5 hover:border-cyan-500/20 transition-all"
           >
             {/* Gunakan leading-none agar tidak ada extra space di atas/bawah teks */}
-            <span className="text-gray-600 text-[10px] uppercase tracking-tighter leading-none">
+            <span className="text-gray-400 text-[10px] uppercase tracking-tighter leading-none">
               Designed by
             </span>
 

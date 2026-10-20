@@ -53,7 +53,7 @@ export function GalleryClient() {
         >
           <Link
             href="/"
-            className="group inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 hover:text-cyan-400 transition-all mb-8"
+            className="group inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 hover:text-cyan-400 transition-all mb-8"
           >
             <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
             Back to Home
@@ -63,7 +63,7 @@ export function GalleryClient() {
               <h1 className="text-5xl md:text-8xl font-black italic tracking-tighter leading-[0.8] uppercase text-white">
                 GALLERY <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-400 to-blue-600">FILES.</span>
               </h1>
-              <p className="text-gray-500 mt-8 max-w-lg font-medium tracking-wide text-sm leading-relaxed">
+              <p className="text-gray-400 mt-8 max-w-lg font-medium tracking-wide text-sm leading-relaxed">
                 Lebih dari sekadar transportasi, ini tentang kenangan. Jelajahi galeri momen dari mereka yang telah mempercayakan perjalanannya kepada kami.
               </p>
             </div>
@@ -83,7 +83,16 @@ export function GalleryClient() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
               onClick={() => setPreview(item)}
-              className={`group relative rounded-[2rem] overflow-hidden border border-white/5 bg-[#0d0d12] cursor-pointer shadow-2xl transition-all duration-500 hover:border-cyan-500/50 ${item.span || ""}`}
+              role="button"
+              tabIndex={0}
+              aria-label={`Buka pratinjau ${item.type === "photo" ? "foto" : "video"} dokumentasi ${i + 1}`}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setPreview(item);
+                }
+              }}
+              className={`group relative rounded-[2rem] overflow-hidden border border-white/5 bg-[#0d0d12] cursor-pointer shadow-2xl transition-all duration-500 hover:border-cyan-500/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${item.span || ""}`}
             >
               <div className="relative w-full h-full overflow-hidden">
                 {item.type === "photo" ? (
@@ -120,21 +129,26 @@ export function GalleryClient() {
       {/* FULL PREVIEW MODAL */}
       <AnimatePresence>
         {preview && (
-          <m.div 
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Pratinjau dokumentasi"
             className="fixed inset-0 bg-black/95 backdrop-blur-2xl flex items-center justify-center z-[999] p-4 md:p-12"
             onClick={() => setPreview(null)}
           >
             {/* Close Button */}
             <m.button
+              type="button"
+              aria-label="Tutup pratinjau"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="absolute top-6 right-6 md:top-10 md:right-10 bg-cyan-500 text-black p-4 rounded-2xl z-[1000] hover:rotate-90 transition-all duration-300 shadow-2xl"
+              className="absolute top-6 right-6 md:top-10 md:right-10 bg-cyan-500 text-black p-4 rounded-2xl z-[1000] hover:rotate-90 transition-all duration-300 shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
               onClick={() => setPreview(null)}
             >
-              <X size={24} strokeWidth={3} />
+              <X size={24} strokeWidth={3} aria-hidden="true" />
             </m.button>
 
             {/* Content Preview */}

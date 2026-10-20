@@ -51,25 +51,26 @@ export const FloatingWhatsApp = () => {
       <AnimatePresence>
         {open && (
           <motion.div
+            id="whatsapp-contact-menu"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
             className="flex flex-col items-end gap-3 mb-2"
           >
-            {/* ... isi tombol Admin 1 & 2 tetap sama ... */}
             <motion.a
               variants={itemVariants}
               href={`https://wa.me/62895321866545`}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Chat WhatsApp dengan Admin 1 (buka di tab baru)"
               className="group flex items-center gap-4 pl-5 pr-4 py-3 rounded-2xl bg-[#0d0d12]/80 backdrop-blur-2xl border border-white/10 text-white shadow-xl hover:border-emerald-500/50 transition-all duration-300"
             >
                <div className="flex flex-col items-end">
                 <span className="text-xs font-bold">Admin 1</span>
               </div>
               <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-black transition-all">
-                <User className="w-5 h-5" />
+                <User className="w-5 h-5" aria-hidden="true" />
               </div>
             </motion.a>
 
@@ -78,13 +79,14 @@ export const FloatingWhatsApp = () => {
               href={`https://wa.me/6285822593523`}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Chat WhatsApp dengan Admin 2 (buka di tab baru)"
               className="group flex items-center gap-4 pl-5 pr-4 py-3 rounded-2xl bg-[#0d0d12]/80 backdrop-blur-2xl border border-white/10 text-white shadow-xl hover:border-cyan-500/50 transition-all duration-300"
             >
                <div className="flex flex-col items-end">
                 <span className="text-xs font-bold">Admin 2</span>
               </div>
               <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center group-hover:bg-cyan-500 group-hover:text-black transition-all">
-                <Users className="w-5 h-5" />
+                <Users className="w-5 h-5" aria-hidden="true" />
               </div>
             </motion.a>
           </motion.div>
@@ -92,13 +94,21 @@ export const FloatingWhatsApp = () => {
       </AnimatePresence>
 
       <motion.button
+        type="button"
         onClick={() => setOpen(!open)}
-        animate={{ 
+        aria-label={open ? "Tutup pilihan kontak WhatsApp" : "Buka pilihan kontak WhatsApp"}
+        aria-expanded={open}
+        aria-controls="whatsapp-contact-menu"
+        animate={{
           backgroundColor: open ? "#1f2937" : "#10b981",
         }}
-        className="w-16 h-16 rounded-3xl flex items-center justify-center text-white shadow-2xl border border-white/10 relative"
+        className="w-16 h-16 rounded-3xl flex items-center justify-center text-white shadow-2xl border border-white/10 relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
       >
-        {open ? <X size={32} /> : <FaWhatsapp size={32} />}
+        {open ? (
+          <X size={32} aria-hidden="true" />
+        ) : (
+          <FaWhatsapp size={32} aria-hidden="true" />
+        )}
       </motion.button>
     </div>
   );

@@ -73,7 +73,10 @@ export const TravelKuching = () => {
       className="py-24 md:py-32 relative overflow-hidden bg-[#08080b]"
     >
       {/* Background Glows yang konsisten dengan About.tsx */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden opacity-30">
+      <div
+        aria-hidden="true"
+        className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden opacity-30"
+      >
         <div className="absolute top-[10%] left-[-10%] w-[40%] h-[40%] bg-cyan-500/10 blur-[120px] rounded-full" />
         <div className="absolute bottom-[10%] right-[-10%] w-[40%] h-[40%] bg-purple-500/10 blur-[120px] rounded-full" />
       </div>
@@ -114,8 +117,7 @@ export const TravelKuching = () => {
             transition={{ delay: 0.2 }}
             className="text-gray-400 text-base md:text-lg max-w-sm leading-relaxed text-left md:text-right"
           >
-            Perjalanan Premium lintas negara Pontianak — Kuching dengan harga
-            transparan dan layanan berkelas.
+            Nikmati paket wisata kuching dan tour kuching terbaik bersama jasa travel kuching terpercaya dari Pontianak.
           </m.p>
         </div>
 
@@ -134,7 +136,16 @@ export const TravelKuching = () => {
                   {/* Image Container */}
                   <div className="relative h-48 overflow-hidden">
                     <div
-                      className="absolute inset-0 z-20 cursor-zoom-in flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-all duration-500"
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`Perbesar gambar ${kend.brand} ${kend.subtitle}`}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          setSelectedImage(kend.image);
+                        }
+                      }}
+                      className="absolute inset-0 z-20 cursor-zoom-in flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-all duration-500 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                       onClick={() => setSelectedImage(kend.image)}
                     >
                       <div className="p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 transform scale-50 group-hover:scale-100 transition-all duration-500">
@@ -143,13 +154,11 @@ export const TravelKuching = () => {
                     </div>
                     <Image
                       src={kend.image}
-                      alt={`${kend.brand} ${kend.subtitle} - Travel Pontianak Kuching`}
+                      alt={`${kend.brand} ${kend.subtitle} - Paket wisata kuching dan tour kuching terpercaya`}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      loading={i === 0 ? "eager" : "lazy"}
-                      priority={i === 0}
-                    />
+                      loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#08080b] to-transparent opacity-60" />
                   </div>
 
@@ -170,7 +179,7 @@ export const TravelKuching = () => {
                     </div>
 
                     <div className="mb-6">
-                      <div className="text-xs text-gray-500 uppercase font-bold tracking-widest mb-1">
+                      <div className="text-xs text-gray-400 uppercase font-bold tracking-widest mb-1">
                         Start From
                       </div>
                       <p className="text-2xl font-black text-white">
@@ -252,6 +261,9 @@ export const TravelKuching = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Pratinjau gambar paket"
             className="fixed inset-0 z-[100] flex items-center justify-center bg-[#08080b]/95 backdrop-blur-xl p-6"
             onClick={() => setSelectedImage(null)}
           >
@@ -263,10 +275,12 @@ export const TravelKuching = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <button
+                type="button"
+                aria-label="Tutup pratinjau gambar"
                 onClick={() => setSelectedImage(null)}
-                className="absolute -top-12 right-0 text-white/50 hover:text-white transition-colors flex items-center gap-2 text-xs font-bold tracking-widest"
+                className="absolute -top-12 right-0 text-white/50 hover:text-white transition-colors flex items-center gap-2 text-xs font-bold tracking-widest focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
               >
-                CLOSE <X size={20} />
+                CLOSE <X size={20} aria-hidden="true" />
               </button>
 
               <Image

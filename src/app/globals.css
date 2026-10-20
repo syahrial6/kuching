@@ -28,3 +28,56 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Token warna aksesibel (kontras AA terhadap background #08080b) */
+@theme inline {
+  --color-muted: #9ca3af; /* 8.7:1 — teks sekunder */
+  --color-muted-dim: #8b93a1; /* 6.9:1 — caption kecil */
+}
+
+/* Animasi CSS-only untuk konten di atas fold (menggantikan animasi opacity
+   berbasis framer-motion pada elemen LCP agar tercatat pada frame pertama).
+   PENTING: Chrome TIDAK mencatat LCP untuk elemen ber-opacity 0. Karena itu
+   elemen LCP (h1) memakai keyframe transform-only (slideUp) sehingga teks
+   langsung terpaint dan LCP terekam pada frame pertama. */
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-slide-up,
+  .animate-fade-up,
+  .animate-fade-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

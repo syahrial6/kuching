@@ -40,7 +40,10 @@ export function About() {
 
   return (
     <section id="about" className="py-24 md:py-32 relative overflow-hidden bg-[#08080b]">
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden opacity-30">
+      <div
+        aria-hidden="true"
+        className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden opacity-30"
+      >
         <div className="absolute top-[20%] right-[-10%] w-[50%] h-[40%] bg-purple-500/10 blur-[120px] rounded-full" />
         <div className="absolute bottom-[20%] left-[-10%] w-[50%] h-[40%] bg-cyan-500/10 blur-[120px] rounded-full" />
       </div>
@@ -92,8 +95,8 @@ export function About() {
                 </div>
                 <h3 className="text-xl font-bold mb-3 uppercase tracking-tight">{item.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">{item.desc}</p>
-                <div className="pt-4 border-t border-white/5 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-500">
-                  Verified <ArrowRight size={12} />
+                <div className="pt-4 border-t border-white/5 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400">
+                  Verified <ArrowRight size={12} aria-hidden="true" />
                 </div>
               </div>
             </m.div>

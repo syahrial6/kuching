@@ -1,6 +1,61 @@
 import type { NextConfig } from "next";
 
+// Catatan: preload HSTS bersifat hampir permanen — pastikan seluruh subdomain
+// sudah HTTPS sebelum menambahkan directive "preload" dan submit ke hstspreload.org
+const securityHeaders = [
+  {
+    key: "Strict-Transport-Security",
+    value: "max-age=63072000; includeSubDomains",
+  },
+  {
+    key: "Cross-Origin-Opener-Policy",
+    value: "same-origin",
+  },
+  {
+    key: "Cross-Origin-Resource-Policy",
+    value: "same-origin",
+  },
+  {
+    key: "Content-Security-Policy",
+    value: [
+      "default-src 'self'",
+      // 'unsafe-inline' dibutuhkan oleh bootstrap RSC Next.js & script gtag inline.
+      // Roadmap: migrasi gtag ke @next/third-parties lalu evaluasi nonce-based CSP.
+      `script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com`,
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://www.google.com https://www.google.co.id",
+      "font-src 'self' data:",
+      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://region1.google-analytics.com https://pagead2.googlesyndication.com",
+      "frame-src https://www.googletagmanager.com https://td.doubleclick.net https://www.google.com https://www.google.co.id",
+      "form-action 'self'",
+      "frame-ancestors 'none'",
+      "base-uri 'self'",
+      "object-src 'none'",
+      "upgrade-insecure-requests",
+    ].join("; "),
+  },
+  {
+    key: "X-Content-Type-Options",
+    value: "nosniff",
+  },
+  {
+    key: "X-Frame-Options",
+    value: "DENY",
+  },
+  {
+    key: "Referrer-Policy",
+    value: "strict-origin-when-cross-origin",
+  },
+  {
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=(), payment=()",
+  },
+];
+
 const nextConfig: NextConfig = {
+  experimental: {
+    optimizePackageImports: ["lucide-react", "react-icons", "@headlessui/react"],
+  },
   images: {
     remotePatterns: [
       {
@@ -19,24 +74,7 @@ const nextConfig: NextConfig = {
   headers: async () => [
     {
       source: "/(.*)",
-      headers: [
-        {
-          key: "X-Content-Type-Options",
-          value: "nosniff",
-        },
-        {
-          key: "X-Frame-Options",
-          value: "DENY",
-        },
-        {
-          key: "X-XSS-Protection",
-          value: "1; mode=block",
-        },
-        {
-          key: "Referrer-Policy",
-          value: "strict-origin-when-cross-origin",
-        },
-      ],
+      headers: securityHeaders,
     },
     {
       source: "/images/(.*)",

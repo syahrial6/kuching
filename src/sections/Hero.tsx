@@ -21,31 +21,35 @@ export function Hero() {
       className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden bg-[#08080b]"
       style={{ transform: "translateZ(0)" }}
     >
-      {/* Background Decorative Glows */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden">
+      {/* Background Decorative Glows (dekoratif — dikecualikan dari aksesibilitas) */}
+      <div
+        aria-hidden="true"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden"
+      >
         <div className="absolute top-[-5%] left-[-10%] w-[70%] md:w-[40%] h-[30%] bg-cyan-500/10 blur-[80px] md:blur-[120px] rounded-full" />
         <div className="absolute bottom-[5%] right-[-10%] w-[70%] md:w-[40%] h-[30%] bg-purple-500/10 blur-[80px] md:blur-[120px] rounded-full" />
       </div>
 
       <div className="max-w-7xl mx-auto px-5 md:px-8 relative z-10">
-        {/* Header Section */}
+        {/* Header Section
+            CATATAN LCP: elemen di atas fold memakai animasi CSS murni (bukan
+            framer-motion) agar tidak dirender dengan inline style opacity:0.
+            Elemen LCP (<h1>) harus terpaint pada frame pertama tanpa menunggu
+            hydration JavaScript. */}
         <div className="text-center max-w-4xl mx-auto mb-12 md:mb-20">
-          <m.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 px-3 py-1 md:px-4 md:py-1.5 mb-6 md:mb-8 rounded-full bg-white/5 border border-white/10"
+          <div
+            className="inline-flex items-center gap-2 px-3 py-1 md:px-4 md:py-1.5 mb-6 md:mb-8 rounded-full bg-white/5 border border-white/10 animate-fade-in"
+            style={{ animationDuration: "0.5s" }}
           >
             <Star size={12} className="text-cyan-400 fill-cyan-400" />
             <span className="text-[9px] md:text-[11px] uppercase tracking-[0.15em] text-gray-300 font-bold">
               Premium Service • Sejak 2022
             </span>
-          </m.div>
+          </div>
 
-          <m.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-[2.2rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter italic leading-[1.1] md:leading-[0.9] text-white"
+          <h1
+            className="animate-slide-up text-[2.2rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter italic leading-[1.1] md:leading-[0.9] text-white"
+            style={{ animationDuration: "0.6s", animationFillMode: "both" }}
           >
             TRAVEL
             <br />
@@ -55,17 +59,19 @@ export function Hero() {
             <span className="block bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
               KUCHING
             </span>
-          </m.h1>
+          </h1>
 
-          <m.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="mt-6 md:mt-8 text-gray-400 text-base md:text-xl max-w-2xl mx-auto leading-relaxed px-2 md:px-0"
+          <p
+            className="animate-fade-up mt-6 md:mt-8 text-gray-400 text-base md:text-xl max-w-2xl mx-auto leading-relaxed px-2 md:px-0"
+            style={{
+              animationDelay: "0.25s",
+              animationDuration: "0.6s",
+              animationFillMode: "both",
+            }}
           >
-            Solusi transportasi lintas negara dan rental mobil Pontianak dengan
-            standar kenyamanan bintang lima.
-          </m.p>
+            Solusi travel ke kuching door-to-door dan sewa mobil pontianak
+            terpercaya dengan standar pelayanan terbaik.
+          </p>
         </div>
 
         {/* Bento Grid */}
@@ -88,7 +94,7 @@ export function Hero() {
                     <span className="text-[10px] text-cyan-400 font-black uppercase tracking-[0.15em] leading-none">
                       Lintas Negara
                     </span>
-                    <span className="text-[8px] text-gray-500 font-medium uppercase tracking-wider mt-1">
+                    <span className="text-[8px] text-gray-400 font-medium uppercase tracking-wider mt-1">
                       Official Route
                     </span>
                   </div>
@@ -126,7 +132,7 @@ export function Hero() {
                     (f) => (
                       <span
                         key={f}
-                        className="px-3 py-1.5 rounded-full bg-white/5 border border-white/5 text-[10px] text-gray-500 font-bold uppercase tracking-widest"
+                        className="px-3 py-1.5 rounded-full bg-white/5 border border-white/5 text-[10px] text-gray-400 font-bold uppercase tracking-widest"
                       >
                         {f}
                       </span>
@@ -137,7 +143,7 @@ export function Hero() {
 
               <div className="pt-8 mt-auto border-t border-white/5 flex items-center justify-between">
                 <div className="flex flex-col">
-                  <span className="text-gray-500 text-[10px] uppercase tracking-tighter">
+                  <span className="text-gray-400 text-[10px] uppercase tracking-tighter">
                     Mulai Dari
                   </span>
                   <span className="text-white font-bold">Rp 5.000.000</span>
@@ -174,7 +180,7 @@ export function Hero() {
                     <span className="text-[10px] text-purple-400 font-black uppercase tracking-[0.15em] leading-none">
                       Unit Premium
                     </span>
-                    <span className="text-[8px] text-gray-500 font-medium uppercase tracking-wider mt-1">
+                    <span className="text-[8px] text-gray-400 font-medium uppercase tracking-wider mt-1">
                       Ready 24/7 Service
                     </span>
                   </div>
@@ -213,7 +219,7 @@ export function Hero() {
                   {["24/7", "Terawat", "Lengkap"].map((f) => (
                     <span
                       key={f}
-                      className="px-3 py-1.5 rounded-full bg-white/5 border border-white/5 text-[10px] text-gray-500 font-bold uppercase tracking-widest"
+                      className="px-3 py-1.5 rounded-full bg-white/5 border border-white/5 text-[10px] text-gray-400 font-bold uppercase tracking-widest"
                     >
                       {f}
                     </span>
@@ -223,7 +229,7 @@ export function Hero() {
 
               <div className="pt-8 mt-auto border-t border-white/5 flex items-center justify-between">
                 <div className="flex flex-col">
-                  <span className="text-gray-500 text-[10px] uppercase tracking-tighter">
+                  <span className="text-gray-400 text-[10px] uppercase tracking-tighter">
                     Mulai Dari
                   </span>
                   <span className="text-white font-bold">

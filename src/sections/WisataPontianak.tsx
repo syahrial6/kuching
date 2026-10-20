@@ -106,7 +106,10 @@ export function WisataPontianak() {
       style={{ transform: "translateZ(0)" }}
     >
       {/* Background Decorative Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none overflow-hidden">
+      <div
+        aria-hidden="true"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none overflow-hidden"
+      >
         <div className="absolute top-[20%] right-[-10%] w-[60%] md:w-[35%] h-[40%] bg-cyan-500/5 blur-[100px] md:blur-[130px] rounded-full" />
       </div>
 
@@ -151,6 +154,9 @@ export function WisataPontianak() {
           {/* Navigasi Tab Modern */}
           <div className="flex p-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm self-start lg:self-auto">
             <button
+              type="button"
+              aria-label="Tampilkan destinasi wisata"
+              aria-pressed={activeTab === "wisata"}
               onClick={() => setActiveTab("wisata")}
               className={`relative flex items-center gap-2 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-colors z-10 ${
                 activeTab === "wisata"
@@ -169,6 +175,9 @@ export function WisataPontianak() {
               Wisata
             </button>
             <button
+              type="button"
+              aria-label="Tampilkan destinasi kuliner"
+              aria-pressed={activeTab === "kuliner"}
               onClick={() => setActiveTab("kuliner")}
               className={`relative flex items-center gap-2 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-colors z-10 ${
                 activeTab === "kuliner"
@@ -279,10 +288,10 @@ export function WisataPontianak() {
                         href={item.instagramUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center p-2.5 rounded-xl border border-white/10 bg-white/5 text-gray-300 hover:text-white hover:bg-pink-600 hover:border-pink-500 transition-all aspect-square"
-                        title="Buka Instagram"
+                        aria-label={`Instagram ${item.title} (buka di tab baru)`}
+                        className="inline-flex items-center justify-center p-2.5 rounded-xl border border-white/10 bg-white/5 text-gray-300 hover:text-white hover:bg-pink-600 hover:border-pink-500 transition-all aspect-square focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-400"
                       >
-                        <Instagram size={15} />
+                        <Instagram size={15} aria-hidden="true" />
                       </a>
                     )}
                   </div>

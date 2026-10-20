@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: "optional",
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  display: "optional",
+  display: "swap",
+  preload: false, // tidak dipakai di atas fold — keluarkan dari jalur kritis
 });
 
 export const metadata: Metadata = {
@@ -21,18 +23,20 @@ export const metadata: Metadata = {
     template: "%s | Sigma Borneo - Travel Pontianak Kuching",
   },
   description:
-    "Jasa travel Pontianak ke Kuching door-to-door termurah dan rental mobil Pontianak armada terbaru. Berangkat setiap hari via Entikong. Harga mulai Rp300.000/hari. Booking sekarang!",
+    "Travel Pontianak ke Kuching door-to-door dan rental mobil Pontianak armada terbaru. Berangkat via Entikong. Harga sewa mobil mulai Rp300.000/hari. Booking sekarang!",
   keywords: [
+    "Sigma Borneo",
     "travel Pontianak Kuching",
     "travel Pontianak ke Kuching",
-    "jasa travel Pontianak Kuching",
-    "travel Pontianak Kuching murah",
+    "travel ke kuching",
+    "liburan ke kuching",
+    "paket wisata kuching",
+    "tour kuching",
     "travel Pontianak Kuching door to door",
-    "rental mobil Pontianak",
+    "jasa travel Pontianak Kuching",
     "sewa mobil Pontianak",
-    "travel ke Kuching",
-    "Sigma Borneo",
-    "travel kuching",
+    "rental mobil Pontianak",
+    "sewa mobil pontianak terbaik",
   ],
   metadataBase: new URL("https://www.travelkuching.com"),
   alternates: {
@@ -41,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Travel Pontianak Kuching & Rental Mobil Premium | Sigma Borneo",
     description:
-      "Jasa travel Pontianak ke Kuching door-to-door. Harga mulai Rp300.000/hari. Armada premium, driver profesional, berangkat setiap hari.",
+      "Travel Pontianak ke Kuching door-to-door. Harga sewa mobil mulai Rp300.000/hari. Armada premium & driver profesional.",
     url: "https://www.travelkuching.com/",
     siteName: "Sigma Borneo",
     locale: "id_ID",
@@ -59,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Travel Pontianak Kuching & Rental Mobil Premium",
     description:
-      "Jasa travel Pontianak ke Kuching door-to-door. Harga mulai Rp300.000/hari.",
+      "Travel Pontianak ke Kuching door-to-door. Harga sewa mobil  mulai Rp300.000/hari.",
     images: ["/images/logo.png"],
   },
   robots: {
@@ -85,21 +89,19 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* Google Tag (GA4 + Google Ads lama + Google Ads baru digabung) */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-RNH2ESWQWZ"
-          strategy="afterInteractive"
-        />
+        {/* Google Tag (GA4 + Google Ads lama + Google Ads baru digabung)
+            GA4 dimuat via @next/third-parties (otomatis afterInteractive).
+            Google Ads konfigurasi ditunda ke lazyOnload agar tidak berkompetisi
+            dengan hydration & window TBT kritis. send_page_view: false mencegah
+            pageview tercatat ganda karena satu halaman memakai beberapa ID. */}
+        <GoogleAnalytics gaId="G-RNH2ESWQWZ" />
 
-        <Script id="gtag" strategy="afterInteractive">
+        <Script id="gtag-ads" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-RNH2ESWQWZ');
-            gtag('config', 'AW-17755416559');
-            gtag('config', 'AW-18455648054');
+            gtag('config', 'AW-17755416559', { 'send_page_view': false });
+            gtag('config', 'AW-18455648054', { 'send_page_view': false });
           `}
         </Script>
 
@@ -116,7 +118,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               "@id": "https://www.travelkuching.com/#organization",
               "name": "Sigma Borneo",
               "alternateName": "Travel Kuching",
-              "description": "Jasa travel Pontianak ke Kuching dan rental mobil Pontianak. Layanan door-to-door lintas negara dengan armada premium.",
+              "description": "Travel Pontianak ke Kuching, paket wisata kuching, tour kuching, dan rental mobil pontianak terbaik. Layanan door-to-door lintas negara dengan armada premium.",
               "url": "https://www.travelkuching.com/",
               "telephone": "+6285822593523",
               "email": "argroup.ptk@gmail.com",
