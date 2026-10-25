@@ -5,8 +5,8 @@ import Image from "next/image";
 import {
   X,
   Calendar,
-  UserCheck,
-  Fuel,
+  WalletCards,
+  ListChecks,
   Maximize2,
   ArrowUpRight,
 } from "lucide-react";
@@ -21,36 +21,36 @@ export const TravelKuching = () => {
       image: "/images/hiace.webp",
       brand: "Toyota",
       subtitle: "Hiace Commuter",
-      price: 7500000,
+      price: 8500000,
       color: "from-cyan-500/20 to-blue-500/20",
       specs: [
         { label: "3 Hari 2 Malam", icon: Calendar },
-        { label: "Include Driver", icon: UserCheck },
-        { label: "Include Bahan Bakar", icon: Fuel },
+        { label: "Road Tax", icon: WalletCards },
+        { label: "Include Driver & Bahan Bakar", icon: ListChecks },
       ],
     },
     {
       image: "/images/fortuner.webp",
       brand: "Toyota",
       subtitle: "Fortuner GR Sport",
-      price: 7000000,
+      price: 8500000,
       color: "from-purple-500/20 to-blue-500/20",
       specs: [
         { label: "3 Hari 2 Malam", icon: Calendar },
-        { label: "Include Driver", icon: UserCheck },
-        { label: "Include Bahan Bakar", icon: Fuel },
+        { label: "Road Tax", icon: WalletCards },
+        { label: "Include Driver & Bahan Bakar", icon: ListChecks },
       ],
     },
     {
       image: "/images/innova.webp",
       brand: "Toyota",
       subtitle: "Innova Reborn",
-      price: 6000000,
+      price: 6500000,
       color: "from-blue-500/20 to-cyan-500/20",
       specs: [
         { label: "3 Hari 2 Malam", icon: Calendar },
-        { label: "Include Driver", icon: UserCheck },
-        { label: "Include Bahan Bakar", icon: Fuel },
+        { label: "Road Tax", icon: WalletCards },
+        { label: "Include Driver & Bahan Bakar", icon: ListChecks },
       ],
     },
     {
@@ -61,8 +61,8 @@ export const TravelKuching = () => {
       color: "from-indigo-500/20 to-purple-500/20",
       specs: [
         { label: "3 Hari 2 Malam", icon: Calendar },
-        { label: "Include Driver", icon: UserCheck },
-        { label: "Include Bahan Bakar", icon: Fuel },
+        { label: "Road Tax", icon: WalletCards },
+        { label: "Include Driver & Bahan Bakar", icon: ListChecks },
       ],
     },
   ];
@@ -117,7 +117,8 @@ export const TravelKuching = () => {
             transition={{ delay: 0.2 }}
             className="text-gray-400 text-base md:text-lg max-w-sm leading-relaxed text-left md:text-right"
           >
-            Nikmati paket wisata kuching dan tour kuching terbaik bersama jasa travel kuching terpercaya dari Pontianak.
+            Nikmati paket wisata kuching dan tour kuching terbaik bersama jasa
+            travel kuching terpercaya dari Pontianak.
           </m.p>
         </div>
 
@@ -158,7 +159,8 @@ export const TravelKuching = () => {
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      loading="lazy" />
+                      loading="lazy"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#08080b] to-transparent opacity-60" />
                   </div>
 

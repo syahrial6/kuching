@@ -11,7 +11,7 @@ import {
   X,
   MessageCircle,
   Zap,
-  Sparkles,
+  SlidersHorizontal,
   RotateCcw,
   Car,
   CheckCircle2,
@@ -25,17 +25,6 @@ export function VehicleClient() {
 
   const kendaraan = useMemo(
     () => [
-      {
-        image: "/images/avanza_facelift.webp",
-        brand: "TOYOTA",
-        nama: "Avanza Facelift",
-        type: "MPV",
-        kursi: "7",
-        transmisi: "MT",
-        bbm: "Bensin",
-        price: 300000,
-        includeDriver: false,
-      },
       {
         image: "/images/brio.webp",
         brand: "HONDA",
@@ -107,7 +96,7 @@ export function VehicleClient() {
       {
         image: "/images/fortuner.webp",
         brand: "TOYOTA",
-        nama: "Fortuner 2.8 VRZ GR Sport",
+        nama: "Fortuner GR Sport",
         type: "SUV",
         kursi: "7",
         transmisi: "AT",
@@ -332,7 +321,11 @@ export function VehicleClient() {
                     <div className="grid grid-cols-3 gap-2 w-full">
                       {[
                         { icon: Users, label: item.kursi, suffix: " Seats" },
-                        { icon: Sparkles, label: item.transmisi, suffix: "" },
+                        {
+                          icon: SlidersHorizontal,
+                          label: item.transmisi,
+                          suffix: "",
+                        },
                         { icon: Fuel, label: item.bbm, suffix: "" },
                       ].map((spec, i) => (
                         <div
@@ -352,7 +345,7 @@ export function VehicleClient() {
                     {(item.isHybrid || item.includeDriver) && (
                       <div className="flex flex-col gap-2">
                         {item.isHybrid && (
-                          <div className="flex items-center justify-center gap-3 w-full py-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 animate-pulse">
+                          <div className="flex items-center justify-center gap-3 w-full py-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400">
                             <Zap size={14} className="fill-blue-400" />
                             <span className="text-[10px] font-black uppercase tracking-[0.2em] italic">
                               Hybrid Tech
@@ -360,7 +353,7 @@ export function VehicleClient() {
                           </div>
                         )}
                         {item.includeDriver && (
-                          <div className="flex items-center justify-center gap-3 w-full py-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 animate-pulse">
+                          <div className="flex items-center justify-center gap-3 w-full py-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
                             <CheckCircle2 size={14} />
                             <span className="text-[10px] font-black uppercase tracking-[0.2em] italic">
                               Driver Included
